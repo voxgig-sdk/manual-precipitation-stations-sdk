@@ -1,0 +1,25 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 3
+  metrics: count: method: 3
+
+  entity: collection: {
+    path: "/collections/ch.meteoschweiz.ogd-nime": {
+      action: "chmeteoschweizogd_nime": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: item: {
+    path: "/collections/ch.meteoschweiz.ogd-nime/items": {
+      op: list: method: *GET
+    }
+    path: "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}": {
+      rename: param: "itemId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

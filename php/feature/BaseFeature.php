@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// ManualPrecipitationStations SDK base feature
+
+class ManualPrecipitationStationsBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(ManualPrecipitationStationsContext $ctx, array $options): void {}
+    public function PostConstruct(ManualPrecipitationStationsContext $ctx): void {}
+    public function PostConstructEntity(ManualPrecipitationStationsContext $ctx): void {}
+    public function SetData(ManualPrecipitationStationsContext $ctx): void {}
+    public function GetData(ManualPrecipitationStationsContext $ctx): void {}
+    public function GetMatch(ManualPrecipitationStationsContext $ctx): void {}
+    public function SetMatch(ManualPrecipitationStationsContext $ctx): void {}
+    public function PrePoint(ManualPrecipitationStationsContext $ctx): void {}
+    public function PreSpec(ManualPrecipitationStationsContext $ctx): void {}
+    public function PreRequest(ManualPrecipitationStationsContext $ctx): void {}
+    public function PreResponse(ManualPrecipitationStationsContext $ctx): void {}
+    public function PreResult(ManualPrecipitationStationsContext $ctx): void {}
+    public function PreDone(ManualPrecipitationStationsContext $ctx): void {}
+    public function PreUnexpected(ManualPrecipitationStationsContext $ctx): void {}
+}

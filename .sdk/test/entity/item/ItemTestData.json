@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "item": {
+      "ITEM00": {
+        "asset": {},
+        "feature": [],
+        "geometry": {},
+        "id": "ITEM00",
+        "link": [],
+        "number_matched": "s69",
+        "number_returned": "s6a",
+        "property": {},
+        "stac_version": "s6c",
+        "type": "s6d"
+      },
+      "ITEM01": {
+        "asset": {},
+        "feature": [],
+        "geometry": {},
+        "id": "ITEM01",
+        "link": [],
+        "number_matched": "scd",
+        "number_returned": "sce",
+        "property": {},
+        "stac_version": "sd0",
+        "type": "sd1"
+      },
+      "ITEM02": {
+        "asset": {},
+        "feature": [],
+        "geometry": {},
+        "id": "ITEM02",
+        "link": [],
+        "number_matched": "s131",
+        "number_returned": "s132",
+        "property": {},
+        "stac_version": "s134",
+        "type": "s135"
+      }
+    }
+  },
+  "new": {
+    "item": {
+      "item_ref01": {
+        "asset": {},
+        "feature": [],
+        "geometry": {},
+        "link": [],
+        "number_matched": "s195",
+        "number_returned": "s196",
+        "property": {},
+        "stac_version": "s198",
+        "type": "s199"
+      }
+    }
+  }
+}

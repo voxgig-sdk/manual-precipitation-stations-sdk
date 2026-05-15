@@ -1,0 +1,162 @@
+# Entity: item
+
+main: kit: entity: item: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "asset"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "feature"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "geometry"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "link"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "number_matched"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "number_returned"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "property"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "stac_version"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "item"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "bbox"
+                orig: "bbox"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "datetime"
+                orig: "datetime"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/collections/ch.meteoschweiz.ogd-nime/items"
+          parts: [
+            "collections"
+            "ch.meteoschweiz.ogd-nime"
+            "items"
+          ]
+          select: {
+            exist: [
+              "bbox"
+              "datetime"
+              "limit"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "item_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}"
+          parts: [
+            "collections"
+            "ch.meteoschweiz.ogd-nime"
+            "items"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              itemId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

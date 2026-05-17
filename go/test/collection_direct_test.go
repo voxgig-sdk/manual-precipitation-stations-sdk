@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/manual-precipitation-stations-sdk"
-	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/core"
+	sdk "github.com/voxgig-sdk/manual-precipitation-stations-sdk/go"
+	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/core"
 )
 
 func TestCollectionDirect(t *testing.T) {

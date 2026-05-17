@@ -1,10 +1,10 @@
 package voxgigmanualprecipitationstationssdk
 
 import (
-	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/core"
-	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/entity"
-	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/feature"
-	_ "github.com/voxgig-sdk/manual-precipitation-stations-sdk/utility"
+	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/core"
+	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/entity"
+	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/feature"
+	_ "github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/core"
+	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/core"
 )
 
 type BaseFeature struct {

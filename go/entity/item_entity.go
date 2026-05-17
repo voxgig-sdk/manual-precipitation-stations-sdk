@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/core"
+	"github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/utility/struct"
 )
 
 type ItemEntity struct {

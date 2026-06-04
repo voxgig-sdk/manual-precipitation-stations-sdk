@@ -68,14 +68,12 @@ function collection_direct_setup($mockres)
     $env = Runner::env_override([
         "MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID" => [],
         "MANUALPRECIPITATIONSTATIONS_TEST_LIVE" => "FALSE",
-        "MANUALPRECIPITATIONSTATIONS_APIKEY" => "NONE",
     ]);
 
     $live = $env["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["MANUALPRECIPITATIONSTATIONS_APIKEY"],
         ];
         $client = new ManualPrecipitationStationsSDK($merged_opts);
         return [

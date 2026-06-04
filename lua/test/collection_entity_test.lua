@@ -92,7 +92,6 @@ function collection_basic_setup(extra)
     ["MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID"] = idmap,
     ["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] = "FALSE",
     ["MANUALPRECIPITATIONSTATIONS_TEST_EXPLAIN"] = "FALSE",
-    ["MANUALPRECIPITATIONSTATIONS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function collection_basic_setup(extra)
   if env["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["MANUALPRECIPITATIONSTATIONS_APIKEY"],
       },
       extra or {},
     })

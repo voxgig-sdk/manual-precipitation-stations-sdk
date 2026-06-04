@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "ManualPrecipitationStations_sdk"
 
-client = ManualPrecipitationStationsSDK.new({
-  "apikey" => ENV["MANUAL-PRECIPITATION-STATIONS_APIKEY"],
-})
+client = ManualPrecipitationStationsSDK.new({})
 ```
 
 ### 2. List collections
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 MANUAL-PRECIPITATION-STATIONS_TEST_LIVE=TRUE
-MANUAL-PRECIPITATION-STATIONS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

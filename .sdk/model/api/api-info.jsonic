@@ -22,8 +22,29 @@ main: {
       termsOfService: "https://opendatadocs.meteoswiss.ch"
       title: "Manual Precipitation Stations"
       version: "1.0.0"
+      tagline: "Daily rainfall and snow measurements from ~240 MeteoSwiss manual precipitation stations across Switzerland"
+      homepage: "https://www.meteoswiss.admin.ch/services-and-publications/service/open-data.html"
+      docs_url: "https://data.geo.admin.ch/api/stac/static/spec/v1/api.html"
+      license_short: "Swiss Confederation Open Data (OGD) — free reuse with source attribution"
+      license_md: `- Published as Swiss federal Open Government Data (OGD) via data.geo.admin.ch
+- Free to use, redistribute and adapt for any purpose, including commercial use
+- Attribution to MeteoSwiss / Federal Office of Meteorology and Climatology is expected
+- Consult the MeteoSwiss Open Data terms of use for the canonical licence text`
+      about_md: `This SDK wraps the MeteoSwiss **Manual Precipitation Stations** dataset, exposed as a [STAC v1.0.0](https://stacspec.org/) collection on the Swiss Federal Spatial Data Infrastructure catalogue at [data.geo.admin.ch](https://data.geo.admin.ch/). The collection is \`ch.meteoschweiz.ogd-nime\` and is operated by [MeteoSwiss](https://www.meteoswiss.admin.ch/), the Swiss federal weather and climate office.
+
+What you get from the API:
+
+- A STAC collection describing roughly 240 manually-read precipitation stations across Switzerland
+- STAC items per station / time slice, with GeoJSON geometry and asset links to the underlying CSV/data files
+- Daily measurements of liquid precipitation (rain) and new snow
+- Standard STAC navigation: \`/collections\`, \`/collections/{collection_id}/items\`, \`/collections/{collection_id}/items/{item_id}\` and the catalogue-wide \`/search\` endpoint
+
+The service speaks plain HTTPS, returns GeoJSON / JSON, requires no API key, and has CORS enabled so it can be called directly from browsers. Rate limits are not formally documented; the service is shared public infrastructure, so cache responses and avoid hammering it.`
+      entity_desc: {
+        collection: "A STAC Collection describing the manual precipitation station dataset (`ch.meteoschweiz.ogd-nime`), reachable at `/collections/{collection_id}` under `/api/stac/v1`."
+        item: "A STAC Item representing a single station's measurement record with geometry, temporal extent and asset links, listed under `/collections/{collection_id}/items` and fetched at `/collections/{collection_id}/items/{item_id}`."
+      }
+      auth: false
     }
   }
-}
-
 }

@@ -117,12 +117,14 @@ function item_direct_setup(mockres)
   local env = runner.env_override({
     ["MANUALPRECIPITATIONSTATIONS_TEST_ITEM_ENTID"] = {},
     ["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] = "FALSE",
+    ["MANUALPRECIPITATIONSTATIONS_APIKEY"] = "NONE",
   })
 
   local live = env["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["MANUALPRECIPITATIONSTATIONS_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

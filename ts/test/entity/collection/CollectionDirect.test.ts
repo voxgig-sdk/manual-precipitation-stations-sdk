@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID': {},
     'MANUALPRECIPITATIONSTATIONS_TEST_LIVE': 'FALSE',
+    'MANUALPRECIPITATIONSTATIONS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.MANUALPRECIPITATIONSTATIONS_TEST_LIVE
 
   if (live) {
     const client = new ManualPrecipitationStationsSDK({
+      apikey: env.MANUALPRECIPITATIONSTATIONS_APIKEY,
     })
 
     let idmap: any = env['MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID']

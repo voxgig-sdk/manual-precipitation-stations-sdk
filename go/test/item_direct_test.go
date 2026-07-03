@@ -194,12 +194,14 @@ func itemDirectSetup(mockres any) *itemDirectSetupResult {
 	env := envOverride(map[string]any{
 		"MANUALPRECIPITATIONSTATIONS_TEST_ITEM_ENTID": map[string]any{},
 		"MANUALPRECIPITATIONSTATIONS_TEST_LIVE":    "FALSE",
+		"MANUALPRECIPITATIONSTATIONS_APIKEY":       "NONE",
 	})
 
 	live := env["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["MANUALPRECIPITATIONSTATIONS_APIKEY"],
 		}
 		client := sdk.NewManualPrecipitationStationsSDK(mergedOpts)
 

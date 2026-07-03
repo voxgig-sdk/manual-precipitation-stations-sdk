@@ -1,21 +1,8 @@
 # ManualPrecipitationStations SDK
 
-Daily rainfall and snow measurements from ~240 MeteoSwiss manual precipitation stations across Switzerland
+Manual Precipitation Stations client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Manual Precipitation Stations
-
-This SDK wraps the MeteoSwiss **Manual Precipitation Stations** dataset, exposed as a [STAC v1.0.0](https://stacspec.org/) collection on the Swiss Federal Spatial Data Infrastructure catalogue at [data.geo.admin.ch](https://data.geo.admin.ch/). The collection is `ch.meteoschweiz.ogd-nime` and is operated by [MeteoSwiss](https://www.meteoswiss.admin.ch/), the Swiss federal weather and climate office.
-
-What you get from the API:
-
-- A STAC collection describing roughly 240 manually-read precipitation stations across Switzerland
-- STAC items per station / time slice, with GeoJSON geometry and asset links to the underlying CSV/data files
-- Daily measurements of liquid precipitation (rain) and new snow
-- Standard STAC navigation: `/collections`, `/collections/{collection_id}/items`, `/collections/{collection_id}/items/{item_id}` and the catalogue-wide `/search` endpoint
-
-The service speaks plain HTTPS, returns GeoJSON / JSON, requires no API key, and has CORS enabled so it can be called directly from browsers. Rate limits are not formally documented; the service is shared public infrastructure, so cache responses and avoid hammering it.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install manual-precipitation-stations-sdk
 luarocks install manual-precipitation-stations-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ManualPrecipitationStationsSDK } from 'manual-precipitation-stations'
 
-const client = new ManualPrecipitationStationsSDK({})
+const client = new ManualPrecipitationStationsSDK({
+  apikey: process.env.MANUAL-PRECIPITATION-STATIONS_APIKEY,
+})
 
 // List all collections
 const collections = await client.Collection().list()
+console.log(collections.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Collection** | A STAC Collection describing the manual precipitation station dataset (`ch.meteoschweiz.ogd-nime`), reachable at `/collections/{collection_id}` under `/api/stac/v1`. | `/collections/ch.meteoschweiz.ogd-nime` |
-| **Item** | A STAC Item representing a single station's measurement record with geometry, temporal extent and asset links, listed under `/collections/{collection_id}/items` and fetched at `/collections/{collection_id}/items/{item_id}`. | `/collections/ch.meteoschweiz.ogd-nime/items` |
+| **Collection** |  | `/collections/ch.meteoschweiz.ogd-nime` |
+| **Item** |  | `/collections/ch.meteoschweiz.ogd-nime/items` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from manualprecipitationstations_sdk import ManualPrecipitationStationsSDK
 
-client = ManualPrecipitationStationsSDK({})
+client = ManualPrecipitationStationsSDK({
+    "apikey": os.environ.get("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
+})
 
 # List all collections
-collections, err = client.Collection(None).list(None, None)
+collections, err = client.Collection().list()
+print(collections)
 ```
 
 ### PHP
@@ -126,10 +119,13 @@ collections, err = client.Collection(None).list(None, None)
 <?php
 require_once 'manualprecipitationstations_sdk.php';
 
-$client = new ManualPrecipitationStationsSDK([]);
+$client = new ManualPrecipitationStationsSDK([
+    "apikey" => getenv("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
+]);
 
 // List all collections
-[$collections, $err] = $client->Collection(null)->list(null, null);
+[$collections, $err] = $client->Collection()->list();
+print_r($collections);
 ```
 
 ### Golang
@@ -137,10 +133,13 @@ $client = new ManualPrecipitationStationsSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/manual-precipitation-stations-sdk/go"
 
-client := sdk.NewManualPrecipitationStationsSDK(map[string]any{})
+client := sdk.NewManualPrecipitationStationsSDK(map[string]any{
+    "apikey": os.Getenv("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
+})
 
 // List all collections
 collections, err := client.Collection(nil).List(nil, nil)
+fmt.Println(collections)
 ```
 
 ### Ruby
@@ -148,10 +147,13 @@ collections, err := client.Collection(nil).List(nil, nil)
 ```ruby
 require_relative "ManualPrecipitationStations_sdk"
 
-client = ManualPrecipitationStationsSDK.new({})
+client = ManualPrecipitationStationsSDK.new({
+  "apikey" => ENV["MANUAL-PRECIPITATION-STATIONS_APIKEY"],
+})
 
 # List all collections
-collections, err = client.Collection(nil).list(nil, nil)
+collections, err = client.Collection().list
+puts collections
 ```
 
 ### Lua
@@ -159,10 +161,13 @@ collections, err = client.Collection(nil).list(nil, nil)
 ```lua
 local sdk = require("manual-precipitation-stations_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
+})
 
 -- List all collections
-local collections, err = client:Collection(nil):list(nil, nil)
+local collections, err = client:Collection():list()
+print(collections)
 ```
 
 ## Unit testing in offline mode
@@ -181,25 +186,21 @@ const result = await client.Collection().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ManualPrecipitationStationsSDK.test(None, None)
-result, err = client.Collection(None).load(
-    {"id": "test01"}, None
-)
+client = ManualPrecipitationStationsSDK.test()
+result, err = client.Collection().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ManualPrecipitationStationsSDK::test(null, null);
-[$result, $err] = $client->Collection(null)->load(
-    ["id" => "test01"], null
-);
+$client = ManualPrecipitationStationsSDK::test();
+[$result, $err] = $client->Collection()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Collection(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -208,19 +209,15 @@ result, err := client.Collection(nil).Load(
 ### Ruby
 
 ```ruby
-client = ManualPrecipitationStationsSDK.test(nil, nil)
-result, err = client.Collection(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ManualPrecipitationStationsSDK.test
+result, err = client.Collection().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Collection(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Collection():load({ id = "test01" })
 ```
 
 ## How it works
@@ -324,16 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Manual Precipitation Stations
-
-- Upstream: [https://www.meteoswiss.admin.ch/services-and-publications/service/open-data.html](https://www.meteoswiss.admin.ch/services-and-publications/service/open-data.html)
-- API docs: [https://data.geo.admin.ch/api/stac/static/spec/v1/api.html](https://data.geo.admin.ch/api/stac/static/spec/v1/api.html)
-
-- Published as Swiss federal Open Government Data (OGD) via data.geo.admin.ch
-- Free to use, redistribute and adapt for any purpose, including commercial use
-- Attribution to MeteoSwiss / Federal Office of Meteorology and Climatology is expected
-- Consult the MeteoSwiss Open Data terms of use for the canonical licence text
 
 ---
 

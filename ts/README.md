@@ -1,6 +1,11 @@
 # ManualPrecipitationStations TypeScript SDK
 
-The TypeScript SDK for the ManualPrecipitationStations API. Provides a type-safe, entity-oriented interface with full async/await support.
+
+
+The TypeScript SDK for the ManualPrecipitationStations API — a type-safe, entity-oriented client with full async/await support.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -17,7 +22,9 @@ loading a specific record.
 ```ts
 import { ManualPrecipitationStationsSDK } from 'manual-precipitation-stations'
 
-const client = new ManualPrecipitationStationsSDK({})
+const client = new ManualPrecipitationStationsSDK({
+  apikey: process.env.MANUAL-PRECIPITATION-STATIONS_APIKEY,
+})
 ```
 
 ### 2. List collections
@@ -82,7 +89,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ManualPrecipitationStationsSDK()
+const client = new ManualPrecipitationStationsSDK({ apikey: '...' })
 const testClient = client.tester()
 ```
 
@@ -118,6 +125,7 @@ const logger = {
 }
 
 const client = new ManualPrecipitationStationsSDK({
+  apikey: '...',
   extend: [logger],
 })
 ```
@@ -128,6 +136,7 @@ Create a `.env.local` file at the project root:
 
 ```
 MANUAL-PRECIPITATION-STATIONS_TEST_LIVE=TRUE
+MANUAL-PRECIPITATION-STATIONS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,6 +154,7 @@ cd ts && npm test
 
 ```ts
 new ManualPrecipitationStationsSDK(options?: {
+  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -155,6 +165,7 @@ new ManualPrecipitationStationsSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

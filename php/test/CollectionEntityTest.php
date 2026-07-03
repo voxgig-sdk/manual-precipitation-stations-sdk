@@ -86,6 +86,7 @@ function collection_basic_setup($extra)
         "MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID" => $idmap,
         "MANUALPRECIPITATIONSTATIONS_TEST_LIVE" => "FALSE",
         "MANUALPRECIPITATIONSTATIONS_TEST_EXPLAIN" => "FALSE",
+        "MANUALPRECIPITATIONSTATIONS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function collection_basic_setup($extra)
     if ($env["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["MANUALPRECIPITATIONSTATIONS_APIKEY"],
             ],
             $extra ?? [],
         ]);

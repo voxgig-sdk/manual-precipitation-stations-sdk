@@ -61,12 +61,14 @@ def _collection_direct_setup(mockres):
     env = runner.env_override({
         "MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID": {},
         "MANUALPRECIPITATIONSTATIONS_TEST_LIVE": "FALSE",
+        "MANUALPRECIPITATIONSTATIONS_APIKEY": "NONE",
     })
 
     live = env.get("MANUALPRECIPITATIONSTATIONS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("MANUALPRECIPITATIONSTATIONS_APIKEY"),
         }
         client = ManualPrecipitationStationsSDK(merged_opts)
         return {

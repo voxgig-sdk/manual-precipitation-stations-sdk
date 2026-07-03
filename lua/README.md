@@ -10,7 +10,7 @@ The Lua SDK for the ManualPrecipitationStations API — an entity-oriented clien
 
 ## Install
 ```bash
-luarocks install manual-precipitation-stations-sdk
+luarocks install voxgig-sdk-manual-precipitation-stations
 ```
 
 If the module is not yet published, add the source directory to

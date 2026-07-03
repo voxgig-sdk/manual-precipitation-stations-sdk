@@ -10,7 +10,7 @@ The TypeScript SDK for the ManualPrecipitationStations API — a type-safe, enti
 
 ## Install
 ```bash
-npm install manual-precipitation-stations
+npm install @voxgig-sdk/manual-precipitation-stations
 ```
 ## Tutorial: your first API call
 

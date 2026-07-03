@@ -10,7 +10,7 @@ The PHP SDK for the ManualPrecipitationStations API — an entity-oriented clien
 
 ## Install
 ```bash
-composer require voxgig/manual-precipitation-stations-sdk
+composer require voxgig-sdk/manual-precipitation-stations
 ```
 
 

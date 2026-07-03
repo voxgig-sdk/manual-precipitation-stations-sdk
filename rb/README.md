@@ -10,13 +10,13 @@ The Ruby SDK for the ManualPrecipitationStations API — an entity-oriented clie
 
 ## Install
 ```bash
-gem install manual-precipitation-stations-sdk
+gem install voxgig-sdk-manual-precipitation-stations
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "manual-precipitation-stations-sdk"
+gem "voxgig-sdk-manual-precipitation-stations"
 ```
 
 Then run:

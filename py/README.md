@@ -10,7 +10,7 @@ The Python SDK for the ManualPrecipitationStations API — an entity-oriented cl
 
 ## Install
 ```bash
-pip install manual-precipitation-stations-sdk
+pip install voxgig-sdk-manual-precipitation-stations
 ```
 
 Or install from source:

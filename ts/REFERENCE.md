@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `ManualPrecipitationStationsSDK.test()`.
 ## CollectionEntity
 
 ```ts
-const collection = client.Collection()
+const collection = client.collection
 ```
 
 ### Fields
@@ -141,7 +140,7 @@ const collection = client.Collection()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Collection().list()
+const results = await client.collection.list()
 ```
 
 ### Common Methods
@@ -175,7 +174,7 @@ Return a copy of the entity options.
 ## ItemEntity
 
 ```ts
-const item = client.Item()
+const item = client.item
 ```
 
 ### Fields
@@ -200,7 +199,7 @@ const item = client.Item()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Item().list()
+const results = await client.item.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -208,7 +207,7 @@ const results = await client.Item().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Item().load({ id: 'item_id' })
+const result = await client.item.load({ id: 'item_id' })
 ```
 
 ### Common Methods

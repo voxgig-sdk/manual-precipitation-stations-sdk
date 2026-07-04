@@ -10,26 +10,24 @@ This is an unofficial SDK for the Manual Precipitation Stations public API, gene
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/manual-precipitation-stations` | `npm install @voxgig-sdk/manual-precipitation-stations` |
-| Python | `voxgig-sdk-manual-precipitation-stations` | `pip install voxgig-sdk-manual-precipitation-stations` |
-| PHP | `voxgig-sdk/manual-precipitation-stations` | `composer require voxgig-sdk/manual-precipitation-stations` |
-| Golang | `github.com/voxgig-sdk/manual-precipitation-stations-sdk/go` | `go get github.com/voxgig-sdk/manual-precipitation-stations-sdk/go` |
-| Ruby | `voxgig-sdk-manual-precipitation-stations` | `gem install voxgig-sdk-manual-precipitation-stations` |
-| Lua | `voxgig-sdk-manual-precipitation-stations` | `luarocks install voxgig-sdk-manual-precipitation-stations` |
+| TypeScript | `@voxgig-sdk/manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
+| Python | `voxgig-sdk-manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
+| PHP | `voxgig-sdk/manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/manual-precipitation-stations-sdk/go` | `go get github.com/voxgig-sdk/manual-precipitation-stations-sdk/go@latest` |
+| Ruby | `voxgig-sdk-manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
+| Lua | `voxgig-sdk-manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { ManualPrecipitationStationsSDK } from 'manual-precipitation-stations'
+import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations'
 
-const client = new ManualPrecipitationStationsSDK({
-  apikey: process.env.MANUAL-PRECIPITATION-STATIONS_APIKEY,
-})
+const client = new ManualPrecipitationStationsSDK()
 
 // List all collections
-const collections = await client.Collection().list()
+const collections = await client.collection.list()
 console.log(collections.data)
 ```
 
@@ -71,8 +69,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Collection** |  | `/collections/ch.meteoschweiz.ogd-nime` |
-| **Item** |  | `/collections/ch.meteoschweiz.ogd-nime/items` |
+| **Collection** | The Collection entity (list). | `/collections/ch.meteoschweiz.ogd-nime` |
+| **Item** | The Item entity (list, load). | `/collections/ch.meteoschweiz.ogd-nime/items` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -82,15 +80,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from manualprecipitationstations_sdk import ManualPrecipitationStationsSDK
 
-client = ManualPrecipitationStationsSDK({
-    "apikey": os.environ.get("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
-})
+client = ManualPrecipitationStationsSDK()
 
 # List all collections
-collections, err = client.Collection().list()
+collections = client.collection.list()
 print(collections)
 ```
 
@@ -100,12 +95,10 @@ print(collections)
 <?php
 require_once 'manualprecipitationstations_sdk.php';
 
-$client = new ManualPrecipitationStationsSDK([
-    "apikey" => getenv("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
-]);
+$client = new ManualPrecipitationStationsSDK();
 
-// List all collections
-[$collections, $err] = $client->Collection()->list();
+// List all collections (throws on error)
+$collections = $client->collection()->list();
 print_r($collections);
 ```
 
@@ -114,9 +107,7 @@ print_r($collections);
 ```go
 import sdk "github.com/voxgig-sdk/manual-precipitation-stations-sdk/go"
 
-client := sdk.NewManualPrecipitationStationsSDK(map[string]any{
-    "apikey": os.Getenv("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
-})
+client := sdk.New()
 
 // List all collections
 collections, err := client.Collection(nil).List(nil, nil)
@@ -128,12 +119,10 @@ fmt.Println(collections)
 ```ruby
 require_relative "ManualPrecipitationStations_sdk"
 
-client = ManualPrecipitationStationsSDK.new({
-  "apikey" => ENV["MANUAL-PRECIPITATION-STATIONS_APIKEY"],
-})
+client = ManualPrecipitationStationsSDK.new
 
 # List all collections
-collections, err = client.Collection().list
+collections = client.collection.list
 puts collections
 ```
 
@@ -142,12 +131,10 @@ puts collections
 ```lua
 local sdk = require("manual-precipitation-stations_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
-})
+local client = sdk.new()
 
 -- List all collections
-local collections, err = client:Collection():list()
+local collections, err = client:collection():list()
 print(collections)
 ```
 
@@ -160,7 +147,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ManualPrecipitationStationsSDK.test()
-const result = await client.Collection().load({ id: 'test01' })
+const result = await client.collection.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -168,14 +155,14 @@ const result = await client.Collection().load({ id: 'test01' })
 
 ```python
 client = ManualPrecipitationStationsSDK.test()
-result, err = client.Collection().load({"id": "test01"})
+result = client.collection.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = ManualPrecipitationStationsSDK::test();
-[$result, $err] = $client->Collection()->load(["id" => "test01"]);
+$result = $client->collection()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -191,14 +178,14 @@ result, err := client.Collection(nil).Load(
 
 ```ruby
 client = ManualPrecipitationStationsSDK.test
-result, err = client.Collection().load({ "id" => "test01" })
+result = client.collection.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Collection():load({ id = "test01" })
+local result, err = client:collection():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,7 +238,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -260,7 +247,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -278,7 +265,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

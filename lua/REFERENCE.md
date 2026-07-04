@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## CollectionEntity
 
 ```lua
-local collection = client:Collection(nil)
+local collection = client:collection(nil)
 ```
 
 ### Fields
@@ -107,7 +106,7 @@ local collection = client:Collection(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Collection():list()
+local results, err = client:collection():list()
 ```
 
 ### Common Methods
@@ -143,7 +142,7 @@ Return the entity name.
 ## ItemEntity
 
 ```lua
-local item = client:Item(nil)
+local item = client:item(nil)
 ```
 
 ### Fields
@@ -168,7 +167,7 @@ local item = client:Item(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Item():list()
+local results, err = client:item():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -176,7 +175,7 @@ local results, err = client:Item():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Item():load({ id = "item_id" })
+local result, err = client:item():load({ id = "item_id" })
 ```
 
 ### Common Methods

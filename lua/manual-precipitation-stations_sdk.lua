@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:collection():list() / client:collection():load({ id = ... })
+function ManualPrecipitationStationsSDK:collection(data)
+  local EntityMod = require("entity.collection_entity")
+  if data == nil then
+    if self._collection == nil then
+      self._collection = EntityMod.new(self, nil)
+    end
+    return self._collection
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:collection() instead.
 function ManualPrecipitationStationsSDK:Collection(data)
   local EntityMod = require("entity.collection_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:item():list() / client:item():load({ id = ... })
+function ManualPrecipitationStationsSDK:item(data)
+  local EntityMod = require("entity.item_entity")
+  if data == nil then
+    if self._item == nil then
+      self._item = EntityMod.new(self, nil)
+    end
+    return self._item
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:item() instead.
 function ManualPrecipitationStationsSDK:Item(data)
   local EntityMod = require("entity.item_entity")
   return EntityMod.new(self, data)

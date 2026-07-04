@@ -9,9 +9,12 @@ The TypeScript SDK for the ManualPrecipitationStations API — a type-safe, enti
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/manual-precipitation-stations
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ManualPrecipitationStationsSDK } from 'manual-precipitation-stations'
+import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations'
 
-const client = new ManualPrecipitationStationsSDK({
-  apikey: process.env.MANUAL-PRECIPITATION-STATIONS_APIKEY,
-})
+const client = new ManualPrecipitationStationsSDK()
 ```
 
 ### 2. List collections
 
 ```ts
-const result = await client.Collection().list()
+const result = await client.collection.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ManualPrecipitationStationsSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.collection.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ManualPrecipitationStationsSDK({ apikey: '...' })
+const client = new ManualPrecipitationStationsSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.collection
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new ManualPrecipitationStationsSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new ManualPrecipitationStationsSDK({
 Create a `.env.local` file at the project root:
 
 ```
-MANUAL-PRECIPITATION-STATIONS_TEST_LIVE=TRUE
-MANUAL-PRECIPITATION-STATIONS_APIKEY=<your-key>
+MANUAL_PRECIPITATION_STATIONS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new ManualPrecipitationStationsSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new ManualPrecipitationStationsSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -291,7 +288,7 @@ API path: `/collections/ch.meteoschweiz.ogd-nime/items`
 
 ### Collection
 
-Create an instance: `const collection = client.Collection()`
+Create an instance: `const collection = client.collection`
 
 #### Operations
 
@@ -311,13 +308,13 @@ Create an instance: `const collection = client.Collection()`
 #### Example: List
 
 ```ts
-const collections = await client.Collection().list()
+const collections = await client.collection.list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.Item()`
+Create an instance: `const item = client.item`
 
 #### Operations
 
@@ -344,13 +341,13 @@ Create an instance: `const item = client.Item()`
 #### Example: Load
 
 ```ts
-const item = await client.Item().load({ id: 'item_id' })
+const item = await client.item.load({ id: 'item_id' })
 ```
 
 #### Example: List
 
 ```ts
-const items = await client.Item().list()
+const items = await client.item.list()
 ```
 
 
@@ -411,7 +408,7 @@ manual-precipitation-stations/
 Import the SDK from the package root:
 
 ```ts
-import { ManualPrecipitationStationsSDK } from 'manual-precipitation-stations'
+import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations'
 ```
 
 ### Entity state
@@ -421,11 +418,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const collection = client.collection
+await collection.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// collection.data() now returns the loaded collection data
+// collection.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

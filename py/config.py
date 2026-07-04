@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://data.geo.admin.ch/api/stac/v1",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -238,6 +235,7 @@ def make_config():
                       "orig": "item_id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },

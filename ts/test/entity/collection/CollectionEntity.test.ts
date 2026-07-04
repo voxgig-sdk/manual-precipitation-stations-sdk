@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'MANUAL_PRECIPITATION_STATIONS_TEST_COLLECTION_ENTID': idmap,
     'MANUAL_PRECIPITATION_STATIONS_TEST_LIVE': 'FALSE',
     'MANUAL_PRECIPITATION_STATIONS_TEST_EXPLAIN': 'FALSE',
-    'MANUAL_PRECIPITATION_STATIONS_APIKEY': 'NONE',
   })
 
   idmap = env['MANUAL_PRECIPITATION_STATIONS_TEST_COLLECTION_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ManualPrecipitationStationsSDK(merge([
       {
-        apikey: env.MANUAL_PRECIPITATION_STATIONS_APIKEY,
       },
       extra
     ]))

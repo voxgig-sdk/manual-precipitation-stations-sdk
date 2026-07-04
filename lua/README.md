@@ -9,12 +9,9 @@ The Lua SDK for the ManualPrecipitationStations API — an entity-oriented clien
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-manual-precipitation-stations
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("manual-precipitation-stations_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("MANUAL-PRECIPITATION-STATIONS_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List collections
 
 ```lua
-local result, err = client:Collection():list()
+local result, err = client:collection():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +88,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ManualPrecipitationStations():load({ id = "test01" })
+local result, err = client:collection():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -126,8 +121,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-MANUAL-PRECIPITATION-STATIONS_TEST_LIVE=TRUE
-MANUAL-PRECIPITATION-STATIONS_APIKEY=<your-key>
+MANUAL_PRECIPITATION_STATIONS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -150,7 +144,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -250,7 +243,7 @@ API path: `/collections/ch.meteoschweiz.ogd-nime/items`
 
 ### Collection
 
-Create an instance: `const collection = client.Collection()`
+Create an instance: `const collection = client.collection`
 
 #### Operations
 
@@ -270,13 +263,13 @@ Create an instance: `const collection = client.Collection()`
 #### Example: List
 
 ```ts
-const collections = await client.Collection().list()
+const collections = await client.collection.list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.Item()`
+Create an instance: `const item = client.item`
 
 #### Operations
 
@@ -303,13 +296,13 @@ Create an instance: `const item = client.Item()`
 #### Example: Load
 
 ```ts
-const item = await client.Item().load({ id: 'item_id' })
+const item = await client.item.load({ id: 'item_id' })
 ```
 
 #### Example: List
 
 ```ts
-const items = await client.Item().list()
+const items = await client.item.list()
 ```
 
 
@@ -384,11 +377,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local collection = client:collection()
+collection:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- collection:data_get() now returns the loaded collection data
+-- collection:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

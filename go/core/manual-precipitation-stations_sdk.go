@@ -245,11 +245,17 @@ func (sdk *ManualPrecipitationStationsSDK) Direct(fetchargs map[string]any) (map
 }
 
 
+// Collection returns a Collection entity bound to this client.
+// Idiomatic usage: client.Collection(nil).List(nil, nil) or
+// client.Collection(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ManualPrecipitationStationsSDK) Collection(data map[string]any) ManualPrecipitationStationsEntity {
 	return NewCollectionEntityFunc(sdk, data)
 }
 
 
+// Item returns a Item entity bound to this client.
+// Idiomatic usage: client.Item(nil).List(nil, nil) or
+// client.Item(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ManualPrecipitationStationsSDK) Item(data map[string]any) ManualPrecipitationStationsEntity {
 	return NewItemEntityFunc(sdk, data)
 }

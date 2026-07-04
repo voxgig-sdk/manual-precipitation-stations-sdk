@@ -50,8 +50,7 @@ class TestCollectionEntity:
         collection_ref01_ent = client.Collection(None)
         collection_ref01_match = {}
 
-        collection_ref01_list_result, err = collection_ref01_ent.list(collection_ref01_match, None)
-        assert err is None
+        collection_ref01_list_result = collection_ref01_ent.list(collection_ref01_match, None)
         assert isinstance(collection_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _collection_basic_setup(extra):
         "MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID": idmap,
         "MANUALPRECIPITATIONSTATIONS_TEST_LIVE": "FALSE",
         "MANUALPRECIPITATIONSTATIONS_TEST_EXPLAIN": "FALSE",
-        "MANUALPRECIPITATIONSTATIONS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _collection_basic_setup(extra):
     if env.get("MANUALPRECIPITATIONSTATIONS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MANUALPRECIPITATIONSTATIONS_APIKEY"),
             },
             extra or {},
         ])

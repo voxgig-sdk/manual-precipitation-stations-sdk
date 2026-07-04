@@ -3,6 +3,8 @@
 import { CollectionEntity } from './entity/CollectionEntity'
 import { ItemEntity } from './entity/ItemEntity'
 
+export type * from './ManualPrecipitationStationsTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class ManualPrecipitationStationsSDK {
 
 
 
+  _collection?: CollectionEntity
+
+  // Idiomatic facade: `client.collection.list()` / `client.collection.load({ id })`.
+  get collection(): CollectionEntity {
+    return (this._collection ??= new CollectionEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.collection` instead. */
   Collection(data?: any) {
     const self = this
     return new CollectionEntity(self,data)
   }
 
 
+  _item?: ItemEntity
+
+  // Idiomatic facade: `client.item.list()` / `client.item.load({ id })`.
+  get item(): ItemEntity {
+    return (this._item ??= new ItemEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.item` instead. */
   Item(data?: any) {
     const self = this
     return new ItemEntity(self,data)

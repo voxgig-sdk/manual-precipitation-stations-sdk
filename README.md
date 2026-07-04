@@ -26,9 +26,11 @@ import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation
 
 const client = new ManualPrecipitationStationsSDK()
 
-// List all collections
-const collections = await client.collection.list()
-console.log(collections.data)
+// List all collections (returns Collection[])
+const collections = await client.Collection().list()
+for (const collection of collections) {
+  console.log(collection)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from manualprecipitationstations_sdk import ManualPrecipitationStationsSDK
 
 client = ManualPrecipitationStationsSDK()
 
-# List all collections
-collections = client.collection.list()
-print(collections)
+# List all collections (returns a list, raises on error)
+collections = client.Collection().list({})
+for collection in collections:
+    print(collection)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'manualprecipitationstations_sdk.php';
 
 $client = new ManualPrecipitationStationsSDK();
 
-// List all collections (throws on error)
-$collections = $client->collection()->list();
+// List all collections (returns an array; throws on error)
+$collections = $client->Collection()->list();
 print_r($collections);
 ```
 
@@ -121,8 +124,8 @@ require_relative "ManualPrecipitationStations_sdk"
 
 client = ManualPrecipitationStationsSDK.new
 
-# List all collections
-collections = client.collection.list
+# List all collections (returns an Array; raises on error)
+collections = client.Collection.list
 puts collections
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("manual-precipitation-stations_sdk")
 local client = sdk.new()
 
 -- List all collections
-local collections, err = client:collection():list()
+local collections, err = client:Collection():list()
 print(collections)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ManualPrecipitationStationsSDK.test()
-const result = await client.collection.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const collection = await client.Collection().load({ id: 'test01' })
+// collection is a bare Collection populated with mock data
+console.log(collection)
 ```
 
 ### Python
 
 ```python
 client = ManualPrecipitationStationsSDK.test()
-result = client.collection.load({"id": "test01"})
+collection = client.Collection().load({"id": "test01"})
+print(collection)
 ```
 
 ### PHP
 
 ```php
-$client = ManualPrecipitationStationsSDK::test();
-$result = $client->collection()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ManualPrecipitationStationsSDK::test([
+    "entity" => ["collection" => ["test01" => ["id" => "test01"]]],
+]);
+$collection = $client->Collection()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.Collection(nil).Load(
 ### Ruby
 
 ```ruby
-client = ManualPrecipitationStationsSDK.test
-result = client.collection.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ManualPrecipitationStationsSDK.test({
+  "entity" => { "collection" => { "test01" => { "id" => "test01" } } },
+})
+collection = client.Collection.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:collection():load({ id = "test01" })
+local result, err = client:Collection():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -30,37 +30,33 @@ go mod edit -replace github.com/voxgig-sdk/manual-precipitation-stations-sdk/go=
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/manual-precipitation-stations-sdk/go"
-    "github.com/voxgig-sdk/manual-precipitation-stations-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List collections
-
-```go
-    result, err := client.Collection(nil).List(nil, nil)
+    // List collection records — the value is the array of records itself.
+    collections, err := client.Collection(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range collections.([]any) {
+        fmt.Println(item)
     }
+}
 ```
 
 
@@ -110,10 +106,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Collection(nil).Load(
+collection, err := client.Collection(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(collection) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -191,7 +190,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Collection` | `(data map[string]any) ManualPrecipitationStationsEntity` | Create a Collection entity instance. |
-| `Item` | `(data map[string]any) ManualPrecipitationStationsEntity` | Create a Item entity instance. |
+| `Item` | `(data map[string]any) ManualPrecipitationStationsEntity` | Create an Item entity instance. |
 
 ### Entity interface (ManualPrecipitationStationsEntity)
 
@@ -211,17 +210,24 @@ All entities implement the `ManualPrecipitationStationsEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    collection, err := client.Collection(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // collection is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -284,7 +290,11 @@ Create an instance: `collection := client.Collection(nil)`
 #### Example: List
 
 ```go
-results, err := client.Collection(nil).List(nil, nil)
+collections, err := client.Collection(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(collections) // the array of records
 ```
 
 
@@ -317,13 +327,21 @@ Create an instance: `item := client.Item(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+item, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(item) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Item(nil).List(nil, nil)
+items, err := client.Item(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(items) // the array of records
 ```
 
 

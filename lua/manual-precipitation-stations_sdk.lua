@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:collection():list() / client:collection():load({ id = ... })
-function ManualPrecipitationStationsSDK:collection(data)
+-- Idiomatic facade: client:Collection():list() / client:Collection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ManualPrecipitationStationsSDK:Collection(data)
   local EntityMod = require("entity.collection_entity")
   if data == nil then
     if self._collection == nil then
@@ -256,15 +257,10 @@ function ManualPrecipitationStationsSDK:collection(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:collection() instead.
-function ManualPrecipitationStationsSDK:Collection(data)
-  local EntityMod = require("entity.collection_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:item():list() / client:item():load({ id = ... })
-function ManualPrecipitationStationsSDK:item(data)
+-- Idiomatic facade: client:Item():list() / client:Item():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ManualPrecipitationStationsSDK:Item(data)
   local EntityMod = require("entity.item_entity")
   if data == nil then
     if self._item == nil then
@@ -272,12 +268,6 @@ function ManualPrecipitationStationsSDK:item(data)
     end
     return self._item
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:item() instead.
-function ManualPrecipitationStationsSDK:Item(data)
-  local EntityMod = require("entity.item_entity")
   return EntityMod.new(self, data)
 end
 

@@ -220,41 +220,21 @@ class ManualPrecipitationStationsSDK:
         }
 
 
-    @property
-    def collection(self):
-        """Idiomatic facade: client.collection.list() / client.collection.load({"id": ...})."""
-        from entity.collection_entity import CollectionEntity
-        cached = getattr(self, "_collection", None)
-        if cached is None:
-            cached = CollectionEntity(self, None)
-            self._collection = cached
-        return cached
-
-    def Collection(self, data=None):
-        # Deprecated: use client.collection instead.
+    def Collection(self, data=None) -> "CollectionEntity":
+        """Entity factory: client.Collection().list({}) / client.Collection().load({"id": ...})."""
         from entity.collection_entity import CollectionEntity
         return CollectionEntity(self, data)
 
 
-    @property
-    def item(self):
-        """Idiomatic facade: client.item.list() / client.item.load({"id": ...})."""
-        from entity.item_entity import ItemEntity
-        cached = getattr(self, "_item", None)
-        if cached is None:
-            cached = ItemEntity(self, None)
-            self._item = cached
-        return cached
-
-    def Item(self, data=None):
-        # Deprecated: use client.item instead.
+    def Item(self, data=None) -> "ItemEntity":
+        """Entity factory: client.Item().list({}) / client.Item().load({"id": ...})."""
         from entity.item_entity import ItemEntity
         return ItemEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ManualPrecipitationStationsSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class ManualPrecipitationStationsSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.collection_entity import CollectionEntity
+    from entity.item_entity import ItemEntity

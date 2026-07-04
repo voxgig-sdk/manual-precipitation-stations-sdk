@@ -208,26 +208,14 @@ class ManualPrecipitationStationsSDK
   end
 
 
-  # Idiomatic facade: client.collection.list / client.collection.load({ "id" => ... })
-  def collection
-    require_relative 'entity/collection_entity'
-    @collection ||= CollectionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.collection instead.
+  # Canonical facade: client.Collection.list / client.Collection.load({ "id" => ... })
   def Collection(data = nil)
     require_relative 'entity/collection_entity'
     CollectionEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.item.list / client.item.load({ "id" => ... })
-  def item
-    require_relative 'entity/item_entity'
-    @item ||= ItemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.item instead.
+  # Canonical facade: client.Item.list / client.Item.load({ "id" => ... })
   def Item(data = nil)
     require_relative 'entity/item_entity'
     ItemEntity.new(self, data)

@@ -121,7 +121,7 @@ Alias for `ManualPrecipitationStationsSDK.test()`.
 ## CollectionEntity
 
 ```ts
-const collection = client.collection
+const collection = client.Collection()
 ```
 
 ### Fields
@@ -140,7 +140,7 @@ const collection = client.collection
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.collection.list()
+const results = await client.Collection().list()
 ```
 
 ### Common Methods
@@ -174,7 +174,7 @@ Return a copy of the entity options.
 ## ItemEntity
 
 ```ts
-const item = client.item
+const item = client.Item()
 ```
 
 ### Fields
@@ -199,7 +199,7 @@ const item = client.item
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.item.list()
+const results = await client.Item().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -207,7 +207,7 @@ const results = await client.item.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.item.load({ id: 'item_id' })
+const result = await client.Item().load({ id: 'item_id' })
 ```
 
 ### Common Methods

@@ -28,16 +28,14 @@ require_relative "ManualPrecipitationStations_sdk"
 client = ManualPrecipitationStationsSDK.new
 ```
 
-### 2. List collections
+### 2. List collection records
 
 ```ruby
 begin
-  result = client.collection.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Collection records — iterate directly.
+  collections = client.Collection.list
+  collections.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ManualPrecipitationStationsSDK.test
+client = ManualPrecipitationStationsSDK.test({
+  "entity" => { "collection" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.collection.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+collection = client.Collection.load({ "id" => "test01" })
+puts collection
 ```
 
 ### Use a custom fetch function
@@ -168,7 +170,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Collection` | `(data) -> CollectionEntity` | Create a Collection entity instance. |
-| `Item` | `(data) -> ItemEntity` | Create a Item entity instance. |
+| `Item` | `(data) -> ItemEntity` | Create an Item entity instance. |
 
 ### Entity interface
 
@@ -246,7 +248,7 @@ API path: `/collections/ch.meteoschweiz.ogd-nime/items`
 
 ### Collection
 
-Create an instance: `const collection = client.collection`
+Create an instance: `collection = client.Collection`
 
 #### Operations
 
@@ -265,14 +267,15 @@ Create an instance: `const collection = client.collection`
 
 #### Example: List
 
-```ts
-const collections = await client.collection.list()
+```ruby
+# list returns an Array of Collection records (raises on error).
+collections = client.Collection.list
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.item`
+Create an instance: `item = client.Item`
 
 #### Operations
 
@@ -298,14 +301,16 @@ Create an instance: `const item = client.item`
 
 #### Example: Load
 
-```ts
-const item = await client.item.load({ id: 'item_id' })
+```ruby
+# load returns the bare Item record (raises on error).
+item = client.Item.load({ "id" => "item_id" })
 ```
 
 #### Example: List
 
-```ts
-const items = await client.item.list()
+```ruby
+# list returns an Array of Item records (raises on error).
+items = client.Item.list
 ```
 
 
@@ -380,7 +385,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-collection = client.collection
+collection = client.Collection
 collection.load({ "id" => "example_id" })
 
 # collection.data_get now returns the loaded collection data

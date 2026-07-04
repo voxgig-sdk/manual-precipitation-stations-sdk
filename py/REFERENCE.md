@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CollectionEntity
 
 ```python
-collection = client.collection
+collection = client.Collection()
 ```
 
 ### Fields
@@ -103,7 +103,9 @@ collection = client.collection
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.collection.list({})
+results = client.Collection().list({})
+for collection in results:
+    print(collection)
 ```
 
 ### Common Methods
@@ -138,7 +140,7 @@ Return the entity name.
 ## ItemEntity
 
 ```python
-item = client.item
+item = client.Item()
 ```
 
 ### Fields
@@ -163,7 +165,9 @@ item = client.item
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.item.list({})
+results = client.Item().list({})
+for item in results:
+    print(item)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -171,7 +175,7 @@ results = client.item.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.item.load({"id": "item_id"})
+result = client.Item().load({"id": "item_id"})
 ```
 
 ### Common Methods

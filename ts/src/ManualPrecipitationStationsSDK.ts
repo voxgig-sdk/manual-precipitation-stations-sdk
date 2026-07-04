@@ -205,28 +205,14 @@ class ManualPrecipitationStationsSDK {
 
 
 
-  _collection?: CollectionEntity
-
-  // Idiomatic facade: `client.collection.list()` / `client.collection.load({ id })`.
-  get collection(): CollectionEntity {
-    return (this._collection ??= new CollectionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.collection` instead. */
+  // Entity access: `client.Collection().list()` / `client.Collection().load({ id })`.
   Collection(data?: any) {
     const self = this
     return new CollectionEntity(self,data)
   }
 
 
-  _item?: ItemEntity
-
-  // Idiomatic facade: `client.item.list()` / `client.item.load({ id })`.
-  get item(): ItemEntity {
-    return (this._item ??= new ItemEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.item` instead. */
+  // Entity access: `client.Item().list()` / `client.Item().load({ id })`.
   Item(data?: any) {
     const self = this
     return new ItemEntity(self,data)

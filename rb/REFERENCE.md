@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## CollectionEntity
 
 ```ruby
-collection = client.collection
+collection = client.Collection
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ collection = client.collection
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.collection.list(nil)
+results = client.Collection.list(nil)
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ Return the entity name.
 ## ItemEntity
 
 ```ruby
-item = client.item
+item = client.Item
 ```
 
 ### Fields
@@ -170,7 +170,7 @@ item = client.item
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.item.list(nil)
+results = client.Item.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -178,7 +178,7 @@ results = client.item.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.item.load({ "id" => "item_id" })
+result = client.Item.load({ "id" => "item_id" })
 ```
 
 ### Common Methods

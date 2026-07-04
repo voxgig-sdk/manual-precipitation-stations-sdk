@@ -233,10 +233,10 @@ class ManualPrecipitationStationsSDK
 
     private $_collection = null;
 
-    // Idiomatic facade: $client->collection()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Collection() (PHP method
-    // names are case-insensitive).
-    public function collection($data = null)
+    // Canonical facade: $client->Collection()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->collection()
+    // resolves here too.
+    public function Collection($data = null)
     {
         require_once __DIR__ . '/entity/collection_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ManualPrecipitationStationsSDK
 
     private $_item = null;
 
-    // Idiomatic facade: $client->item()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Item() (PHP method
-    // names are case-insensitive).
-    public function item($data = null)
+    // Canonical facade: $client->Item()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->item()
+    // resolves here too.
+    public function Item($data = null)
     {
         require_once __DIR__ . '/entity/item_entity.php';
         if ($data === null) {

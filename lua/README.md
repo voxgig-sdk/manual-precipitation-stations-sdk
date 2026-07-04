@@ -31,17 +31,17 @@ local sdk = require("manual-precipitation-stations_sdk")
 local client = sdk.new()
 ```
 
-### 2. List collections
+### 2. List collection records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:collection():list()
+local collections, err = client:Collection():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(collections) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:collection():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Collection():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -168,7 +168,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `Collection` | `(data) -> CollectionEntity` | Create a Collection entity instance. |
-| `Item` | `(data) -> ItemEntity` | Create a Item entity instance. |
+| `Item` | `(data) -> ItemEntity` | Create an Item entity instance. |
 
 ### Entity interface
 
@@ -190,17 +190,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local collection, err = client:Collection():load({ id = "example_id" })
+    if err then error(err) end
+    -- collection is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -243,7 +248,7 @@ API path: `/collections/ch.meteoschweiz.ogd-nime/items`
 
 ### Collection
 
-Create an instance: `const collection = client.collection`
+Create an instance: `local collection = client:Collection(nil)`
 
 #### Operations
 
@@ -262,14 +267,14 @@ Create an instance: `const collection = client.collection`
 
 #### Example: List
 
-```ts
-const collections = await client.collection.list()
+```lua
+local collections, err = client:Collection():list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.item`
+Create an instance: `local item = client:Item(nil)`
 
 #### Operations
 
@@ -295,14 +300,14 @@ Create an instance: `const item = client.item`
 
 #### Example: Load
 
-```ts
-const item = await client.item.load({ id: 'item_id' })
+```lua
+local item, err = client:Item():load({ id = "item_id" })
 ```
 
 #### Example: List
 
-```ts
-const items = await client.item.list()
+```lua
+local items, err = client:Item():list()
 ```
 
 
@@ -377,7 +382,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local collection = client:collection()
+local collection = client:Collection()
 collection:load({ id = "example_id" })
 
 -- collection:data_get() now returns the loaded collection data

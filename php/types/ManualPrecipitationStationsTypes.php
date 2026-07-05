@@ -21,7 +21,7 @@ class Collection
     public ?string $type = null;
 }
 
-/** Match filter for Collection#list (any subset of Collection fields). */
+/** Request payload for Collection#list. */
 class CollectionListMatch
 {
     public ?string $href = null;
@@ -51,7 +51,7 @@ class ItemLoadMatch
     public string $id;
 }
 
-/** Match filter for Item#list (any subset of Item fields). */
+/** Request payload for Item#list. */
 class ItemListMatch
 {
     public ?array $asset = null;

@@ -101,10 +101,10 @@ collection := client.Collection(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `href` | ``$STRING`` | Yes |  |
-| `rel` | ``$STRING`` | Yes |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `href` | `string` | Yes |  |
+| `rel` | `string` | Yes |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -150,16 +150,16 @@ item := client.Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `feature` | ``$ARRAY`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$ARRAY`` | No |  |
-| `number_matched` | ``$INTEGER`` | No |  |
-| `number_returned` | ``$INTEGER`` | No |  |
-| `property` | ``$OBJECT`` | No |  |
-| `stac_version` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `map[string]any` | No |  |
+| `feature` | `[]any` | No |  |
+| `geometry` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
+| `link` | `[]any` | No |  |
+| `number_matched` | `int` | No |  |
+| `number_returned` | `int` | No |  |
+| `property` | `map[string]any` | No |  |
+| `stac_version` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

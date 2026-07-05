@@ -16,8 +16,7 @@ type Collection struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// CollectionListMatch mirrors the collection fields as an all-optional match
-// filter (Go analog of Partial<Collection>).
+// CollectionListMatch is the typed request payload for Collection.ListTyped.
 type CollectionListMatch struct {
 	Href *string `json:"href,omitempty"`
 	Rel *string `json:"rel,omitempty"`
@@ -44,8 +43,7 @@ type ItemLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ItemListMatch mirrors the item fields as an all-optional match
-// filter (Go analog of Partial<Item>).
+// ItemListMatch is the typed request payload for Item.ListTyped.
 type ItemListMatch struct {
 	Asset *map[string]any `json:"asset,omitempty"`
 	Feature *[]any `json:"feature,omitempty"`

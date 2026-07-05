@@ -8,7 +8,7 @@ Complete API reference for the ManualPrecipitationStations Python SDK.
 ### Constructor
 
 ```python
-from manual-precipitation-stations_sdk import ManualPrecipitationStationsSDK
+from manualprecipitationstations_sdk import ManualPrecipitationStationsSDK
 
 client = ManualPrecipitationStationsSDK(options)
 ```
@@ -91,19 +91,19 @@ collection = client.Collection()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `href` | ``$STRING`` | Yes |  |
-| `rel` | ``$STRING`` | Yes |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `href` | `str` | Yes |  |
+| `rel` | `str` | Yes |  |
+| `title` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Collection().list({})
+results = client.Collection().list()
 for collection in results:
     print(collection)
 ```
@@ -147,25 +147,25 @@ item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `feature` | ``$ARRAY`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$ARRAY`` | No |  |
-| `number_matched` | ``$INTEGER`` | No |  |
-| `number_returned` | ``$INTEGER`` | No |  |
-| `property` | ``$OBJECT`` | No |  |
-| `stac_version` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `dict` | No |  |
+| `feature` | `list` | No |  |
+| `geometry` | `dict` | No |  |
+| `id` | `str` | No |  |
+| `link` | `list` | No |  |
+| `number_matched` | `int` | No |  |
+| `number_returned` | `int` | No |  |
+| `property` | `dict` | No |  |
+| `stac_version` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Item().list({})
+results = client.Item().list()
 for item in results:
     print(item)
 ```

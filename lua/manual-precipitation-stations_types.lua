@@ -13,6 +13,10 @@
 ---@field type? string
 
 ---@class CollectionListMatch
+---@field href? string
+---@field rel? string
+---@field title? string
+---@field type? string
 
 ---@class Item
 ---@field asset? table
@@ -30,6 +34,16 @@
 ---@field id string
 
 ---@class ItemListMatch
+---@field asset? table
+---@field feature? table
+---@field geometry? table
+---@field id? string
+---@field link? table
+---@field number_matched? number
+---@field number_returned? number
+---@field property? table
+---@field stac_version? string
+---@field type? string
 
 local M = {}
 

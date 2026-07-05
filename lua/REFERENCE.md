@@ -94,10 +94,10 @@ local collection = client:Collection(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `href` | ``$STRING`` | Yes |  |
-| `rel` | ``$STRING`` | Yes |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `href` | `string` | Yes |  |
+| `rel` | `string` | Yes |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -149,16 +149,16 @@ local item = client:Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `feature` | ``$ARRAY`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$ARRAY`` | No |  |
-| `number_matched` | ``$INTEGER`` | No |  |
-| `number_returned` | ``$INTEGER`` | No |  |
-| `property` | ``$OBJECT`` | No |  |
-| `stac_version` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `table` | No |  |
+| `feature` | `table` | No |  |
+| `geometry` | `table` | No |  |
+| `id` | `string` | No |  |
+| `link` | `table` | No |  |
+| `number_matched` | `number` | No |  |
+| `number_returned` | `number` | No |  |
+| `property` | `table` | No |  |
+| `stac_version` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

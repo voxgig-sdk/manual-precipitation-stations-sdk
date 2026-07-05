@@ -12,7 +12,12 @@ export interface Collection {
   type?: string
 }
 
-export type CollectionListMatch = Partial<Collection>
+export interface CollectionListMatch {
+  href?: string
+  rel?: string
+  title?: string
+  type?: string
+}
 
 export interface Item {
   asset?: Record<string, any>
@@ -31,5 +36,16 @@ export interface ItemLoadMatch {
   id: string
 }
 
-export type ItemListMatch = Partial<Item>
+export interface ItemListMatch {
+  asset?: Record<string, any>
+  feature?: any[]
+  geometry?: Record<string, any>
+  id?: string
+  link?: any[]
+  number_matched?: number
+  number_returned?: number
+  property?: Record<string, any>
+  stac_version?: string
+  type?: string
+}
 

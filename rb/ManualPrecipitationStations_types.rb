@@ -29,7 +29,7 @@ Collection = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Collection#list (any subset of Collection fields).
+# Request payload for Collection#list.
 #
 # @!attribute [rw] href
 #   @return [String, nil]
@@ -104,7 +104,7 @@ ItemLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Item#list (any subset of Item fields).
+# Request payload for Item#list.
 #
 # @!attribute [rw] asset
 #   @return [Hash, nil]

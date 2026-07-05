@@ -8,7 +8,7 @@ Complete API reference for the ManualPrecipitationStations Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'manual-precipitation-stations_sdk'
+require_relative 'ManualPrecipitationStations_sdk'
 
 client = ManualPrecipitationStationsSDK.new(options)
 ```
@@ -97,19 +97,19 @@ collection = client.Collection
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `href` | ``$STRING`` | Yes |  |
-| `rel` | ``$STRING`` | Yes |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `href` | `String` | Yes |  |
+| `rel` | `String` | Yes |  |
+| `title` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Collection.list(nil)
+results = client.Collection.list
 ```
 
 ### Common Methods
@@ -152,25 +152,25 @@ item = client.Item
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `feature` | ``$ARRAY`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$ARRAY`` | No |  |
-| `number_matched` | ``$INTEGER`` | No |  |
-| `number_returned` | ``$INTEGER`` | No |  |
-| `property` | ``$OBJECT`` | No |  |
-| `stac_version` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `Hash` | No |  |
+| `feature` | `Array` | No |  |
+| `geometry` | `Hash` | No |  |
+| `id` | `String` | No |  |
+| `link` | `Array` | No |  |
+| `number_matched` | `Integer` | No |  |
+| `number_returned` | `Integer` | No |  |
+| `property` | `Hash` | No |  |
+| `stac_version` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Item.list(nil)
+results = client.Item.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

@@ -128,10 +128,10 @@ const collection = client.Collection()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `href` | ``$STRING`` | Yes |  |
-| `rel` | ``$STRING`` | Yes |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `href` | `string` | Yes |  |
+| `rel` | `string` | Yes |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -181,16 +181,16 @@ const item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `feature` | ``$ARRAY`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$ARRAY`` | No |  |
-| `number_matched` | ``$INTEGER`` | No |  |
-| `number_returned` | ``$INTEGER`` | No |  |
-| `property` | ``$OBJECT`` | No |  |
-| `stac_version` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `Record<string, any>` | No |  |
+| `feature` | `any[]` | No |  |
+| `geometry` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
+| `link` | `any[]` | No |  |
+| `number_matched` | `number` | No |  |
+| `number_returned` | `number` | No |  |
+| `property` | `Record<string, any>` | No |  |
+| `stac_version` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

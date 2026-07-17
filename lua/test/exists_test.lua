@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ManualPrecipitationStations SDK exists test
 
 local sdk = require("manual-precipitation-stations_sdk")
 

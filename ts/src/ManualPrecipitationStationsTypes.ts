@@ -17,17 +17,23 @@ export interface CollectionListMatch {
   rel?: string
   title?: string
   type?: string
+
+  // Selects a custom action instead of the plain list:
+  //   'chmeteoschweizogd_nime'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Item {
-  asset?: Record<string, any>
-  feature?: any[]
+  assets?: Record<string, any>
+  features?: any[]
   geometry?: Record<string, any>
   id?: string
-  link?: any[]
-  number_matched?: number
-  number_returned?: number
-  property?: Record<string, any>
+  links?: any[]
+  numberMatched?: number
+  numberReturned?: number
+  properties?: Record<string, any>
   stac_version?: string
   type?: string
 }
@@ -37,14 +43,14 @@ export interface ItemLoadMatch {
 }
 
 export interface ItemListMatch {
-  asset?: Record<string, any>
-  feature?: any[]
+  assets?: Record<string, any>
+  features?: any[]
   geometry?: Record<string, any>
   id?: string
-  link?: any[]
-  number_matched?: number
-  number_returned?: number
-  property?: Record<string, any>
+  links?: any[]
+  numberMatched?: number
+  numberReturned?: number
+  properties?: Record<string, any>
   stac_version?: string
   type?: string
 }

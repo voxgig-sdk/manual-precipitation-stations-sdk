@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ManualPrecipitationStationsSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 collection = client.Collection.list()
 puts collection
 ```
@@ -251,14 +252,14 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
-| `feature` |  |
+| `assets` |  |
+| `features` |  |
 | `geometry` |  |
 | `id` |  |
-| `link` |  |
-| `number_matched` |  |
-| `number_returned` |  |
-| `property` |  |
+| `links` |  |
+| `numberMatched` |  |
+| `numberReturned` |  |
+| `properties` |  |
 | `stac_version` |  |
 | `type` |  |
 
@@ -313,21 +314,21 @@ Create an instance: `item = client.Item`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `Hash` |  |
-| `feature` | `Array` |  |
+| `assets` | `Hash` |  |
+| `features` | `Array` |  |
 | `geometry` | `Hash` |  |
 | `id` | `String` |  |
-| `link` | `Array` |  |
-| `number_matched` | `Integer` |  |
-| `number_returned` | `Integer` |  |
-| `property` | `Hash` |  |
+| `links` | `Array` |  |
+| `numberMatched` | `Integer` |  |
+| `numberReturned` | `Integer` |  |
+| `properties` | `Hash` |  |
 | `stac_version` | `String` |  |
 | `type` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Item record (raises on error).
+# load returns the ENTITY — call data_get for the Item record (raises on error).
 item = client.Item.load({ "id" => "item_id" })
 ```
 

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ManualPrecipitationStations SDK exists test
 
 import pytest
 from manualprecipitationstations_sdk import ManualPrecipitationStationsSDK

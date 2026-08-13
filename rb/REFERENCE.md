@@ -152,14 +152,14 @@ item = client.Item
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `Hash` | No |  |
-| `feature` | `Array` | No |  |
+| `assets` | `Hash` | No |  |
+| `features` | `Array` | No |  |
 | `geometry` | `Hash` | No |  |
 | `id` | `String` | No |  |
-| `link` | `Array` | No |  |
-| `number_matched` | `Integer` | No |  |
-| `number_returned` | `Integer` | No |  |
-| `property` | `Hash` | No |  |
+| `links` | `Array` | No |  |
+| `numberMatched` | `Integer` | No |  |
+| `numberReturned` | `Integer` | No |  |
+| `properties` | `Hash` | No |  |
 | `stac_version` | `String` | No |  |
 | `type` | `String` | No |  |
 

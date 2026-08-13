@@ -221,9 +221,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local collection, err = client:Collection():load()
+    local item, err = client:Item():load({ id = "example_id" })
     if err then error(err) end
-    -- collection is the loaded record
+    -- item is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -247,14 +247,14 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
-| `feature` |  |
+| `assets` |  |
+| `features` |  |
 | `geometry` |  |
 | `id` |  |
-| `link` |  |
-| `number_matched` |  |
-| `number_returned` |  |
-| `property` |  |
+| `links` |  |
+| `numberMatched` |  |
+| `numberReturned` |  |
+| `properties` |  |
 | `stac_version` |  |
 | `type` |  |
 
@@ -308,14 +308,14 @@ Create an instance: `local item = client:Item(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `table` |  |
-| `feature` | `table` |  |
+| `assets` | `table` |  |
+| `features` | `table` |  |
 | `geometry` | `table` |  |
 | `id` | `string` |  |
-| `link` | `table` |  |
-| `number_matched` | `number` |  |
-| `number_returned` | `number` |  |
-| `property` | `table` |  |
+| `links` | `table` |  |
+| `numberMatched` | `number` |  |
+| `numberReturned` | `number` |  |
+| `properties` | `table` |  |
 | `stac_version` | `string` |  |
 | `type` | `string` |  |
 

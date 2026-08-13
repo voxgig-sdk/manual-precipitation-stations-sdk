@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ManualPrecipitationStationsUtility::setRegistrar(function (ManualPrecipitationSt
     $u->prepare_params = [ManualPrecipitationStationsPrepareParams::class, 'call'];
     $u->prepare_path = [ManualPrecipitationStationsPreparePath::class, 'call'];
     $u->prepare_query = [ManualPrecipitationStationsPrepareQuery::class, 'call'];
+    $u->graphql_body = [ManualPrecipitationStationsGraphql::class, 'body'];
+    $u->graphql_errors = [ManualPrecipitationStationsGraphql::class, 'errors'];
     $u->result_basic = [ManualPrecipitationStationsResultBasic::class, 'call'];
     $u->result_body = [ManualPrecipitationStationsResultBody::class, 'call'];
     $u->result_headers = [ManualPrecipitationStationsResultHeaders::class, 'call'];

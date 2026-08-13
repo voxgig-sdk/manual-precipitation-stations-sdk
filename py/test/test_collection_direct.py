@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from manualprecipitationstations_sdk.utility.voxgig_struct import voxgig_struct as vs
 from manualprecipitationstations_sdk import ManualPrecipitationStationsSDK
-from core import helpers
+from manualprecipitationstations_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _collection_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID": {},
-        "MANUALPRECIPITATIONSTATIONS_TEST_LIVE": "FALSE",
+        "MANUAL_PRECIPITATION_STATIONS_TEST_COLLECTION_ENTID": {},
+        "MANUAL_PRECIPITATION_STATIONS_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("MANUALPRECIPITATIONSTATIONS_TEST_LIVE") == "TRUE"
+    live = env.get("MANUAL_PRECIPITATION_STATIONS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

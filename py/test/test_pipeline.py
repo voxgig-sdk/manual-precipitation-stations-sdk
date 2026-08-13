@@ -16,11 +16,11 @@
 import pytest
 
 from manualprecipitationstations_sdk import ManualPrecipitationStationsSDK
-from core.error import ManualPrecipitationStationsError
-from core.result import ManualPrecipitationStationsResult
-from core.response import ManualPrecipitationStationsResponse
-from core.spec import ManualPrecipitationStationsSpec
-from feature.base_feature import ManualPrecipitationStationsBaseFeature
+from manualprecipitationstations_sdk.core.error import ManualPrecipitationStationsError
+from manualprecipitationstations_sdk.core.result import ManualPrecipitationStationsResult
+from manualprecipitationstations_sdk.core.response import ManualPrecipitationStationsResponse
+from manualprecipitationstations_sdk.core.spec import ManualPrecipitationStationsSpec
+from manualprecipitationstations_sdk.feature.base_feature import ManualPrecipitationStationsBaseFeature
 
 
 def _client():

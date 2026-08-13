@@ -156,14 +156,14 @@ fmt.Println(item.GetName()) // "item"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `map[string]any` | No |  |
-| `feature` | `[]any` | No |  |
+| `assets` | `map[string]any` | No |  |
+| `features` | `[]any` | No |  |
 | `geometry` | `map[string]any` | No |  |
 | `id` | `string` | No |  |
-| `link` | `[]any` | No |  |
-| `number_matched` | `int` | No |  |
-| `number_returned` | `int` | No |  |
-| `property` | `map[string]any` | No |  |
+| `links` | `[]any` | No |  |
+| `numberMatched` | `int` | No |  |
+| `numberReturned` | `int` | No |  |
+| `properties` | `map[string]any` | No |  |
 | `stac_version` | `string` | No |  |
 | `type` | `string` | No |  |
 

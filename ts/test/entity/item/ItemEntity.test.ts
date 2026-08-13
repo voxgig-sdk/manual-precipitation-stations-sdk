@@ -26,8 +26,8 @@ import {
 describe('ItemEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when MANUALPRECIPITATIONSTATIONS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('MANUALPRECIPITATIONSTATIONS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when MANUAL_PRECIPITATION_STATIONS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('MANUAL_PRECIPITATION_STATIONS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ManualPrecipitationStationsSDK.test()
@@ -63,13 +63,13 @@ describe('ItemEntity', async () => {
     const item_ref01_ent = client.Item()
     const item_ref01_match: any = {}
 
-    const item_ref01_list = await item_ref01_ent.list(item_ref01_match)
+    const item_ref01_list = (await item_ref01_ent.list(item_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const item_ref01_match_dt0: any = {}
     item_ref01_match_dt0.id = item_ref01_data.id
-    const item_ref01_data_dt0 = await item_ref01_ent.load(item_ref01_match_dt0)
+    const item_ref01_data_dt0 = (await item_ref01_ent.load(item_ref01_match_dt0)).data()
     assert(item_ref01_data_dt0.id === item_ref01_data.id)
 
 

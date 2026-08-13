@@ -19,14 +19,14 @@
 ---@field type? string
 
 ---@class Item
----@field asset? table
----@field feature? table
+---@field assets? table
+---@field features? table
 ---@field geometry? table
 ---@field id? string
----@field link? table
----@field number_matched? number
----@field number_returned? number
----@field property? table
+---@field links? table
+---@field numberMatched? number
+---@field numberReturned? number
+---@field properties? table
 ---@field stac_version? string
 ---@field type? string
 
@@ -34,14 +34,14 @@
 ---@field id string
 
 ---@class ItemListMatch
----@field asset? table
----@field feature? table
+---@field assets? table
+---@field features? table
 ---@field geometry? table
 ---@field id? string
----@field link? table
----@field number_matched? number
----@field number_returned? number
----@field property? table
+---@field links? table
+---@field numberMatched? number
+---@field numberReturned? number
+---@field properties? table
 ---@field stac_version? string
 ---@field type? string
 

@@ -60,11 +60,11 @@ def collection_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "MANUALPRECIPITATIONSTATIONS_TEST_COLLECTION_ENTID" => {},
-    "MANUALPRECIPITATIONSTATIONS_TEST_LIVE" => "FALSE",
+    "MANUAL_PRECIPITATION_STATIONS_TEST_COLLECTION_ENTID" => {},
+    "MANUAL_PRECIPITATION_STATIONS_TEST_LIVE" => "FALSE",
   })
 
-  live = env["MANUALPRECIPITATIONSTATIONS_TEST_LIVE"] == "TRUE"
+  live = env["MANUAL_PRECIPITATION_STATIONS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

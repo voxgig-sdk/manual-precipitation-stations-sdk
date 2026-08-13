@@ -2,38 +2,38 @@
   "existing": {
     "item": {
       "ITEM00": {
-        "asset": {},
-        "feature": [],
+        "assets": {},
+        "features": [],
         "geometry": {},
         "id": "ITEM00",
-        "link": [],
-        "number_matched": "s69",
-        "number_returned": "s6a",
-        "property": {},
+        "links": [],
+        "numberMatched": "s69",
+        "numberReturned": "s6a",
+        "properties": {},
         "stac_version": "s6c",
         "type": "s6d"
       },
       "ITEM01": {
-        "asset": {},
-        "feature": [],
+        "assets": {},
+        "features": [],
         "geometry": {},
         "id": "ITEM01",
-        "link": [],
-        "number_matched": "scd",
-        "number_returned": "sce",
-        "property": {},
+        "links": [],
+        "numberMatched": "scd",
+        "numberReturned": "sce",
+        "properties": {},
         "stac_version": "sd0",
         "type": "sd1"
       },
       "ITEM02": {
-        "asset": {},
-        "feature": [],
+        "assets": {},
+        "features": [],
         "geometry": {},
         "id": "ITEM02",
-        "link": [],
-        "number_matched": "s131",
-        "number_returned": "s132",
-        "property": {},
+        "links": [],
+        "numberMatched": "s131",
+        "numberReturned": "s132",
+        "properties": {},
         "stac_version": "s134",
         "type": "s135"
       }
@@ -42,13 +42,13 @@
   "new": {
     "item": {
       "item_ref01": {
-        "asset": {},
-        "feature": [],
+        "assets": {},
+        "features": [],
         "geometry": {},
-        "link": [],
-        "number_matched": "s195",
-        "number_returned": "s196",
-        "property": {},
+        "links": [],
+        "numberMatched": "s195",
+        "numberReturned": "s196",
+        "properties": {},
         "stac_version": "s198",
         "type": "s199"
       }

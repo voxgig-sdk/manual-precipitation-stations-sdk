@@ -52,10 +52,10 @@ CollectionListMatch = Struct.new(
 
 # Item entity data model.
 #
-# @!attribute [rw] asset
+# @!attribute [rw] assets
 #   @return [Hash, nil]
 #
-# @!attribute [rw] feature
+# @!attribute [rw] features
 #   @return [Array, nil]
 #
 # @!attribute [rw] geometry
@@ -64,16 +64,16 @@ CollectionListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Array, nil]
 #
-# @!attribute [rw] number_matched
+# @!attribute [rw] numberMatched
 #   @return [Integer, nil]
 #
-# @!attribute [rw] number_returned
+# @!attribute [rw] numberReturned
 #   @return [Integer, nil]
 #
-# @!attribute [rw] property
+# @!attribute [rw] properties
 #   @return [Hash, nil]
 #
 # @!attribute [rw] stac_version
@@ -82,14 +82,14 @@ CollectionListMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 Item = Struct.new(
-  :asset,
-  :feature,
+  :assets,
+  :features,
   :geometry,
   :id,
-  :link,
-  :number_matched,
-  :number_returned,
-  :property,
+  :links,
+  :numberMatched,
+  :numberReturned,
+  :properties,
   :stac_version,
   :type,
   keyword_init: true
@@ -106,10 +106,10 @@ ItemLoadMatch = Struct.new(
 
 # Request payload for Item#list.
 #
-# @!attribute [rw] asset
+# @!attribute [rw] assets
 #   @return [Hash, nil]
 #
-# @!attribute [rw] feature
+# @!attribute [rw] features
 #   @return [Array, nil]
 #
 # @!attribute [rw] geometry
@@ -118,16 +118,16 @@ ItemLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Array, nil]
 #
-# @!attribute [rw] number_matched
+# @!attribute [rw] numberMatched
 #   @return [Integer, nil]
 #
-# @!attribute [rw] number_returned
+# @!attribute [rw] numberReturned
 #   @return [Integer, nil]
 #
-# @!attribute [rw] property
+# @!attribute [rw] properties
 #   @return [Hash, nil]
 #
 # @!attribute [rw] stac_version
@@ -136,14 +136,14 @@ ItemLoadMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 ItemListMatch = Struct.new(
-  :asset,
-  :feature,
+  :assets,
+  :features,
   :geometry,
   :id,
-  :link,
-  :number_matched,
-  :number_returned,
-  :property,
+  :links,
+  :numberMatched,
+  :numberReturned,
+  :properties,
   :stac_version,
   :type,
   keyword_init: true

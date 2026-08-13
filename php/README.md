@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ManualPrecipitationStationsSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $collection = $client->Collection()->list();
 print_r($collection);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -261,14 +262,14 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
-| `feature` |  |
+| `assets` |  |
+| `features` |  |
 | `geometry` |  |
 | `id` |  |
-| `link` |  |
-| `number_matched` |  |
-| `number_returned` |  |
-| `property` |  |
+| `links` |  |
+| `numberMatched` |  |
+| `numberReturned` |  |
+| `properties` |  |
 | `stac_version` |  |
 | `type` |  |
 
@@ -323,21 +324,21 @@ Create an instance: `$item = $client->Item();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `array` |  |
-| `feature` | `array` |  |
+| `assets` | `array` |  |
+| `features` | `array` |  |
 | `geometry` | `array` |  |
 | `id` | `string` |  |
-| `link` | `array` |  |
-| `number_matched` | `int` |  |
-| `number_returned` | `int` |  |
-| `property` | `array` |  |
+| `links` | `array` |  |
+| `numberMatched` | `int` |  |
+| `numberReturned` | `int` |  |
+| `properties` | `array` |  |
 | `stac_version` | `string` |  |
 | `type` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Item record (throws on error).
+// load() returns the ENTITY — call data_get() for the Item record (throws on error).
 $item = $client->Item()->load(["id" => "item_id"]);
 ```
 

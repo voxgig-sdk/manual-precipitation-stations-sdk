@@ -276,14 +276,14 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `"asset"` |  |
-| `"feature"` |  |
+| `"assets"` |  |
+| `"features"` |  |
 | `"geometry"` |  |
 | `"id"` |  |
-| `"link"` |  |
-| `"number_matched"` |  |
-| `"number_returned"` |  |
-| `"property"` |  |
+| `"links"` |  |
+| `"numberMatched"` |  |
+| `"numberReturned"` |  |
+| `"properties"` |  |
 | `"stac_version"` |  |
 | `"type"` |  |
 
@@ -341,14 +341,14 @@ Create an instance: `item := client.Item(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `map[string]any` |  |
-| `feature` | `[]any` |  |
+| `assets` | `map[string]any` |  |
+| `features` | `[]any` |  |
 | `geometry` | `map[string]any` |  |
 | `id` | `string` |  |
-| `link` | `[]any` |  |
-| `number_matched` | `int` |  |
-| `number_returned` | `int` |  |
-| `property` | `map[string]any` |  |
+| `links` | `[]any` |  |
+| `numberMatched` | `int` |  |
+| `numberReturned` | `int` |  |
+| `properties` | `map[string]any` |  |
 | `stac_version` | `string` |  |
 | `type` | `string` |  |
 

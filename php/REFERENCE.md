@@ -151,14 +151,14 @@ $item = $client->Item();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `array` | No |  |
-| `feature` | `array` | No |  |
+| `assets` | `array` | No |  |
+| `features` | `array` | No |  |
 | `geometry` | `array` | No |  |
 | `id` | `string` | No |  |
-| `link` | `array` | No |  |
-| `number_matched` | `int` | No |  |
-| `number_returned` | `int` | No |  |
-| `property` | `array` | No |  |
+| `links` | `array` | No |  |
+| `numberMatched` | `int` | No |  |
+| `numberReturned` | `int` | No |  |
+| `properties` | `array` | No |  |
 | `stac_version` | `string` | No |  |
 | `type` | `string` | No |  |
 

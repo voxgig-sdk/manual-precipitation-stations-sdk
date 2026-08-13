@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'ManualPrecipitationStations',
   }
 
 
@@ -95,6 +95,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/collections/ch.meteoschweiz.ogd-nime",
               "parts": [
@@ -122,14 +123,14 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "asset",
+          "name": "assets",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "feature",
+          "name": "features",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -150,28 +151,28 @@ class Config {
         },
         {
           "active": true,
-          "name": "link",
+          "name": "links",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "number_matched",
+          "name": "numberMatched",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "number_returned",
+          "name": "numberReturned",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "property",
+          "name": "properties",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 7
@@ -228,6 +229,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/collections/ch.meteoschweiz.ogd-nime/items",
               "parts": [
@@ -270,6 +272,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
               "parts": [

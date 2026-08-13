@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ManualPrecipitationStationsSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 collection = client.Collection().list()
 # collection contains the mock response record
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -257,14 +258,14 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
-| `feature` |  |
+| `assets` |  |
+| `features` |  |
 | `geometry` |  |
 | `id` |  |
-| `link` |  |
-| `number_matched` |  |
-| `number_returned` |  |
-| `property` |  |
+| `links` |  |
+| `numberMatched` |  |
+| `numberReturned` |  |
+| `properties` |  |
 | `stac_version` |  |
 | `type` |  |
 
@@ -318,14 +319,14 @@ Create an instance: `item = client.Item()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `dict` |  |
-| `feature` | `list` |  |
+| `assets` | `dict` |  |
+| `features` | `list` |  |
 | `geometry` | `dict` |  |
 | `id` | `str` |  |
-| `link` | `list` |  |
-| `number_matched` | `int` |  |
-| `number_returned` | `int` |  |
-| `property` | `dict` |  |
+| `links` | `list` |  |
+| `numberMatched` | `int` |  |
+| `numberReturned` | `int` |  |
+| `properties` | `dict` |  |
 | `stac_version` | `str` |  |
 | `type` | `str` |  |
 

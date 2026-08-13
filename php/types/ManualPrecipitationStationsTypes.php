@@ -33,14 +33,14 @@ class CollectionListMatch
 /** Item entity data model. */
 class Item
 {
-    public ?array $asset = null;
-    public ?array $feature = null;
+    public ?array $assets = null;
+    public ?array $features = null;
     public ?array $geometry = null;
     public ?string $id = null;
-    public ?array $link = null;
-    public ?int $number_matched = null;
-    public ?int $number_returned = null;
-    public ?array $property = null;
+    public ?array $links = null;
+    public ?int $numberMatched = null;
+    public ?int $numberReturned = null;
+    public ?array $properties = null;
     public ?string $stac_version = null;
     public ?string $type = null;
 }
@@ -54,14 +54,14 @@ class ItemLoadMatch
 /** Request payload for Item#list. */
 class ItemListMatch
 {
-    public ?array $asset = null;
-    public ?array $feature = null;
+    public ?array $assets = null;
+    public ?array $features = null;
     public ?array $geometry = null;
     public ?string $id = null;
-    public ?array $link = null;
-    public ?int $number_matched = null;
-    public ?int $number_returned = null;
-    public ?array $property = null;
+    public ?array $links = null;
+    public ?int $numberMatched = null;
+    public ?int $numberReturned = null;
+    public ?array $properties = null;
     public ?string $stac_version = null;
     public ?string $type = null;
 }

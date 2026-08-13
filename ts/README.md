@@ -35,7 +35,9 @@ const client = new ManualPrecipitationStationsSDK()
 
 ### 2. List collection records
 
-`list()` resolves to an array of Collection objects — iterate it directly:
+`list()` resolves to an array of Collection ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const collections = await client.Collection().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = ManualPrecipitationStationsSDK.test()
 
 const collection = await client.Collection().list()
-// collection is a bare entity populated with mock response data
+// collection is the entity, populated with mock response data
+// — call collection.data() for the record itself
 console.log(collection)
 ```
 
@@ -300,14 +303,14 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
-| `feature` |  |
+| `assets` |  |
+| `features` |  |
 | `geometry` |  |
 | `id` |  |
-| `link` |  |
-| `number_matched` |  |
-| `number_returned` |  |
-| `property` |  |
+| `links` |  |
+| `numberMatched` |  |
+| `numberReturned` |  |
+| `properties` |  |
 | `stac_version` |  |
 | `type` |  |
 
@@ -361,14 +364,14 @@ Create an instance: `const item = client.Item()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `Record<string, any>` |  |
-| `feature` | `any[]` |  |
+| `assets` | `Record<string, any>` |  |
+| `features` | `any[]` |  |
 | `geometry` | `Record<string, any>` |  |
 | `id` | `string` |  |
-| `link` | `any[]` |  |
-| `number_matched` | `number` |  |
-| `number_returned` | `number` |  |
-| `property` | `Record<string, any>` |  |
+| `links` | `any[]` |  |
+| `numberMatched` | `number` |  |
+| `numberReturned` | `number` |  |
+| `properties` | `Record<string, any>` |  |
 | `stac_version` | `string` |  |
 | `type` | `string` |  |
 

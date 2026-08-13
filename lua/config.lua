@@ -63,6 +63,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/collections/ch.meteoschweiz.ogd-nime",
                 ["parts"] = {
@@ -90,14 +91,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "asset",
+            ["name"] = "assets",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "feature",
+            ["name"] = "features",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -118,28 +119,28 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "link",
+            ["name"] = "links",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "number_matched",
+            ["name"] = "numberMatched",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "number_returned",
+            ["name"] = "numberReturned",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "property",
+            ["name"] = "properties",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 7,
@@ -196,6 +197,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/collections/ch.meteoschweiz.ogd-nime/items",
                 ["parts"] = {
@@ -238,6 +240,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
                 ["parts"] = {

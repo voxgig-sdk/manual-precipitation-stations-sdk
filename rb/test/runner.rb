@@ -23,8 +23,8 @@ module ManualPrecipitationStationsTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("MANUALPRECIPITATIONSTATIONS_TEST_LIVE")
-    override = getenv("MANUALPRECIPITATIONSTATIONS_TEST_OVERRIDE")
+    live = getenv("MANUAL_PRECIPITATION_STATIONS_TEST_LIVE")
+    override = getenv("MANUAL_PRECIPITATION_STATIONS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ManualPrecipitationStationsTestRunner
       end
     end
 
-    explain = getenv("MANUALPRECIPITATIONSTATIONS_TEST_EXPLAIN")
-    m["MANUALPRECIPITATIONSTATIONS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("MANUAL_PRECIPITATION_STATIONS_TEST_EXPLAIN")
+    m["MANUAL_PRECIPITATION_STATIONS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

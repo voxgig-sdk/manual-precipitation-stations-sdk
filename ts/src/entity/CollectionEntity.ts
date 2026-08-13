@@ -37,7 +37,7 @@ class CollectionEntity extends ManualPrecipitationStationsEntityBase<Collection>
 
 
 
-  async list(this: any, reqmatch?: CollectionListMatch, ctrl?: Control): Promise<Collection[]> {
+  async list(this: any, reqmatch?: CollectionListMatch, ctrl?: Control): Promise<CollectionEntity[]> {
 
     const utility = this._utility
 

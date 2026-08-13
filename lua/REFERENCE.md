@@ -149,14 +149,14 @@ local item = client:Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `table` | No |  |
-| `feature` | `table` | No |  |
+| `assets` | `table` | No |  |
+| `features` | `table` | No |  |
 | `geometry` | `table` | No |  |
 | `id` | `string` | No |  |
-| `link` | `table` | No |  |
-| `number_matched` | `number` | No |  |
-| `number_returned` | `number` | No |  |
-| `property` | `table` | No |  |
+| `links` | `table` | No |  |
+| `numberMatched` | `number` | No |  |
+| `numberReturned` | `number` | No |  |
+| `properties` | `table` | No |  |
 | `stac_version` | `string` | No |  |
 | `type` | `string` | No |  |
 

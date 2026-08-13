@@ -63,6 +63,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/collections/ch.meteoschweiz.ogd-nime",
 								"parts": []any{
@@ -79,7 +80,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -90,14 +90,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "asset",
+						"name": "assets",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "feature",
+						"name": "features",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -118,28 +118,28 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "link",
+						"name": "links",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "number_matched",
+						"name": "numberMatched",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "number_returned",
+						"name": "numberReturned",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "property",
+						"name": "properties",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 7,
@@ -196,6 +196,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/collections/ch.meteoschweiz.ogd-nime/items",
 								"parts": []any{
@@ -217,7 +218,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -238,6 +238,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
 								"parts": []any{
@@ -263,7 +264,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

@@ -147,14 +147,14 @@ item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `dict` | No |  |
-| `feature` | `list` | No |  |
+| `assets` | `dict` | No |  |
+| `features` | `list` | No |  |
 | `geometry` | `dict` | No |  |
 | `id` | `str` | No |  |
-| `link` | `list` | No |  |
-| `number_matched` | `int` | No |  |
-| `number_returned` | `int` | No |  |
-| `property` | `dict` | No |  |
+| `links` | `list` | No |  |
+| `numberMatched` | `int` | No |  |
+| `numberReturned` | `int` | No |  |
+| `properties` | `dict` | No |  |
 | `stac_version` | `str` | No |  |
 | `type` | `str` | No |  |
 

@@ -6,12 +6,12 @@ main: kit: entity: item: {
 
   fields: [
     {
-      name: "asset"
+      name: "assets"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "feature"
+      name: "features"
       req: false
       type: "`$ARRAY`"
     }
@@ -26,22 +26,22 @@ main: kit: entity: item: {
       type: "`$STRING`"
     }
     {
-      name: "link"
+      name: "links"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "number_matched"
+      name: "numberMatched"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "number_returned"
+      name: "numberReturned"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "property"
+      name: "properties"
       req: false
       type: "`$OBJECT`"
     }

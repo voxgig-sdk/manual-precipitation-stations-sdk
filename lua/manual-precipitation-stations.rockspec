@@ -23,6 +23,7 @@ build = {
   modules = {
     ["manual-precipitation-stations_sdk"] = "manual-precipitation-stations_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

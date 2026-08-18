@@ -40,7 +40,7 @@ class ManualPrecipitationStationsSDK
         $utility = new ManualPrecipitationStationsUtility();
         $this->_utility = $utility;
 
-        $config = ManualPrecipitationStationsConfig::make_config();
+        $config = ManualPrecipitationStationsConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

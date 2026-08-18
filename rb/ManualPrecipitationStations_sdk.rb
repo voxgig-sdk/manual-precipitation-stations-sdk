@@ -28,7 +28,7 @@ class ManualPrecipitationStationsSDK
     utility = ManualPrecipitationStationsUtility.new
     @_utility = utility
 
-    config = ManualPrecipitationStationsConfig.make_config
+    config = ManualPrecipitationStationsConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

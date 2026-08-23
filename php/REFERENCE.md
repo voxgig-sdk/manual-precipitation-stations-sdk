@@ -151,9 +151,9 @@ $item = $client->Item();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `array` | No |  |
+| `assets` | `array` | No | Assets associated with this item (e.g., CSV data file) |
 | `features` | `array` | No |  |
-| `geometry` | `array` | No |  |
+| `geometry` | `array` | No | GeoJSON geometry of the station location |
 | `id` | `string` | No |  |
 | `links` | `array` | No |  |
 | `numberMatched` | `int` | No |  |

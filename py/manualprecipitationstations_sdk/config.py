@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "ManualPrecipitationStations",
+            "slug": "manual-precipitation-stations",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -102,6 +105,7 @@ def make_config():
         "fields": [
           {
             "name": "assets",
+            "short": "Assets associated with this item (e.g., CSV data file)",
             "type": "`$OBJECT`",
           },
           {
@@ -110,6 +114,7 @@ def make_config():
           },
           {
             "name": "geometry",
+            "short": "GeoJSON geometry of the station location",
             "type": "`$OBJECT`",
           },
           {

@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "ManualPrecipitationStations",
+      slug = "manual-precipitation-stations",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -81,6 +84,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "assets",
+            ["short"] = "Assets associated with this item (e.g., CSV data file)",
             ["type"] = "`$OBJECT`",
           },
           {
@@ -89,6 +93,7 @@ local function make_config()
           },
           {
             ["name"] = "geometry",
+            ["short"] = "GeoJSON geometry of the station location",
             ["type"] = "`$OBJECT`",
           },
           {

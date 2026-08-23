@@ -8,6 +8,7 @@ main: kit: entity: item: {
     {
       name: "assets"
       req: false
+      short: "Assets associated with this item (e.g., CSV data file)"
       type: "`$OBJECT`"
     }
     {
@@ -18,6 +19,7 @@ main: kit: entity: item: {
     {
       name: "geometry"
       req: false
+      short: "GeoJSON geometry of the station location"
       type: "`$OBJECT`"
     }
     {

@@ -147,9 +147,9 @@ item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `dict` | No |  |
+| `assets` | `dict` | No | Assets associated with this item (e.g., CSV data file) |
 | `features` | `list` | No |  |
-| `geometry` | `dict` | No |  |
+| `geometry` | `dict` | No | GeoJSON geometry of the station location |
 | `id` | `str` | No |  |
 | `links` | `list` | No |  |
 | `numberMatched` | `int` | No |  |

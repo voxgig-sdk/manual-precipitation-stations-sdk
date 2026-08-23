@@ -252,9 +252,9 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `assets` |  |
+| `assets` | Assets associated with this item (e.g., CSV data file) |
 | `features` |  |
-| `geometry` |  |
+| `geometry` | GeoJSON geometry of the station location |
 | `id` |  |
 | `links` |  |
 | `numberMatched` |  |
@@ -314,9 +314,9 @@ Create an instance: `item = client.Item`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assets` | `Hash` |  |
+| `assets` | `Hash` | Assets associated with this item (e.g., CSV data file) |
 | `features` | `Array` |  |
-| `geometry` | `Hash` |  |
+| `geometry` | `Hash` | GeoJSON geometry of the station location |
 | `id` | `String` |  |
 | `links` | `Array` |  |
 | `numberMatched` | `Integer` |  |

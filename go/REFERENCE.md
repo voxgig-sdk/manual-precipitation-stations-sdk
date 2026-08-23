@@ -156,9 +156,9 @@ fmt.Println(item.GetName()) // "item"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `map[string]any` | No |  |
+| `assets` | `map[string]any` | No | Assets associated with this item (e.g., CSV data file) |
 | `features` | `[]any` | No |  |
-| `geometry` | `map[string]any` | No |  |
+| `geometry` | `map[string]any` | No | GeoJSON geometry of the station location |
 | `id` | `string` | No |  |
 | `links` | `[]any` | No |  |
 | `numberMatched` | `int` | No |  |

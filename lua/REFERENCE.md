@@ -149,9 +149,9 @@ local item = client:Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `table` | No |  |
+| `assets` | `table` | No | Assets associated with this item (e.g., CSV data file) |
 | `features` | `table` | No |  |
-| `geometry` | `table` | No |  |
+| `geometry` | `table` | No | GeoJSON geometry of the station location |
 | `id` | `string` | No |  |
 | `links` | `table` | No |  |
 | `numberMatched` | `number` | No |  |

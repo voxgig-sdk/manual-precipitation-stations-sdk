@@ -152,9 +152,9 @@ item = client.Item
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `Hash` | No |  |
+| `assets` | `Hash` | No | Assets associated with this item (e.g., CSV data file) |
 | `features` | `Array` | No |  |
-| `geometry` | `Hash` | No |  |
+| `geometry` | `Hash` | No | GeoJSON geometry of the station location |
 | `id` | `String` | No |  |
 | `links` | `Array` | No |  |
 | `numberMatched` | `Integer` | No |  |

@@ -6,7 +6,7 @@ The Golang SDK for the ManualPrecipitationStations API — an entity-oriented cl
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Collection(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -276,9 +276,9 @@ API path: `/collections/ch.meteoschweiz.ogd-nime`
 
 | Field | Description |
 | --- | --- |
-| `"assets"` |  |
+| `"assets"` | Assets associated with this item (e.g., CSV data file) |
 | `"features"` |  |
-| `"geometry"` |  |
+| `"geometry"` | GeoJSON geometry of the station location |
 | `"id"` |  |
 | `"links"` |  |
 | `"numberMatched"` |  |
@@ -341,9 +341,9 @@ Create an instance: `item := client.Item(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assets` | `map[string]any` |  |
+| `assets` | `map[string]any` | Assets associated with this item (e.g., CSV data file) |
 | `features` | `[]any` |  |
-| `geometry` | `map[string]any` |  |
+| `geometry` | `map[string]any` | GeoJSON geometry of the station location |
 | `id` | `string` |  |
 | `links` | `[]any` |  |
 | `numberMatched` | `int` |  |

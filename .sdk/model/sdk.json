@@ -98,6 +98,7 @@
               "active": true,
               "name": "assets",
               "req": false,
+              "short": "Assets associated with this item (e.g., CSV data file)",
               "type": "`$OBJECT`"
             },
             {
@@ -110,6 +111,7 @@
               "active": true,
               "name": "geometry",
               "req": false,
+              "short": "GeoJSON geometry of the station location",
               "type": "`$OBJECT`"
             },
             {

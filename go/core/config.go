@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "ManualPrecipitationStations",
+			"slug": "manual-precipitation-stations",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -85,6 +88,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "assets",
+						"short": "Assets associated with this item (e.g., CSV data file)",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -93,6 +97,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "geometry",
+						"short": "GeoJSON geometry of the station location",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{

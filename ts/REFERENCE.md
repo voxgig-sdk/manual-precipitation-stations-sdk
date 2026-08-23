@@ -201,9 +201,9 @@ const item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `Record<string, any>` | No |  |
+| `assets` | `Record<string, any>` | No | Assets associated with this item (e.g., CSV data file) |
 | `features` | `any[]` | No |  |
-| `geometry` | `Record<string, any>` | No |  |
+| `geometry` | `Record<string, any>` | No | GeoJSON geometry of the station location |
 | `id` | `string` | No |  |
 | `links` | `any[]` | No |  |
 | `numberMatched` | `number` | No |  |

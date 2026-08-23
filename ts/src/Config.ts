@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ManualPrecipitationStations',
+        slug: "manual-precipitation-stations",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -110,6 +121,7 @@ class Config {
       "fields": [
         {
           "name": "assets",
+          "short": "Assets associated with this item (e.g., CSV data file)",
           "type": "`$OBJECT`"
         },
         {
@@ -118,6 +130,7 @@ class Config {
         },
         {
           "name": "geometry",
+          "short": "GeoJSON geometry of the station location",
           "type": "`$OBJECT`"
         },
         {

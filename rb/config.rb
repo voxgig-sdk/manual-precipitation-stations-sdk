@@ -19,6 +19,9 @@ module ManualPrecipitationStationsConfig
     {
       "main" => {
         "name" => "ManualPrecipitationStations",
+        "slug" => "manual-precipitation-stations",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -93,6 +96,7 @@ module ManualPrecipitationStationsConfig
           "fields" => [
             {
               "name" => "assets",
+              "short" => "Assets associated with this item (e.g., CSV data file)",
               "type" => "`$OBJECT`",
             },
             {
@@ -101,6 +105,7 @@ module ManualPrecipitationStationsConfig
             },
             {
               "name" => "geometry",
+              "short" => "GeoJSON geometry of the station location",
               "type" => "`$OBJECT`",
             },
             {

@@ -28,6 +28,7 @@ module ManualPrecipitationStationsConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {

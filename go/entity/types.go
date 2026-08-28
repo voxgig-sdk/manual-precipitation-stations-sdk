@@ -49,16 +49,9 @@ type ItemLoadMatch struct {
 
 // ItemListMatch is the typed request payload for Item.ListTyped.
 type ItemListMatch struct {
-	Assets *map[string]any `json:"assets,omitempty"`
-	Features *[]any `json:"features,omitempty"`
-	Geometry *map[string]any `json:"geometry,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *[]any `json:"links,omitempty"`
-	NumberMatched *int `json:"numberMatched,omitempty"`
-	NumberReturned *int `json:"numberReturned,omitempty"`
-	Properties *map[string]any `json:"properties,omitempty"`
-	StacVersion *string `json:"stac_version,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Bbox *[]any `json:"bbox,omitempty"`
+	Datetime *string `json:"datetime,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

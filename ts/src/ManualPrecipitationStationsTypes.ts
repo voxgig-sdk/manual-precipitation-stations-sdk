@@ -43,15 +43,8 @@ export interface ItemLoadMatch {
 }
 
 export interface ItemListMatch {
-  assets?: Record<string, any>
-  features?: any[]
-  geometry?: Record<string, any>
-  id?: string
-  links?: any[]
-  numberMatched?: number
-  numberReturned?: number
-  properties?: Record<string, any>
-  stac_version?: string
-  type?: string
+  bbox?: any[]
+  datetime?: string
+  limit?: number
 }
 

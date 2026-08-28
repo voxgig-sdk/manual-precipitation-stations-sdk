@@ -54,15 +54,8 @@ class ItemLoadMatch
 /** Request payload for Item#list. */
 class ItemListMatch
 {
-    public ?array $assets = null;
-    public ?array $features = null;
-    public ?array $geometry = null;
-    public ?string $id = null;
-    public ?array $links = null;
-    public ?int $numberMatched = null;
-    public ?int $numberReturned = null;
-    public ?array $properties = null;
-    public ?string $stac_version = null;
-    public ?string $type = null;
+    public ?array $bbox = null;
+    public ?string $datetime = null;
+    public ?int $limit = null;
 }
 

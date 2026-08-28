@@ -106,46 +106,18 @@ ItemLoadMatch = Struct.new(
 
 # Request payload for Item#list.
 #
-# @!attribute [rw] assets
-#   @return [Hash, nil]
-#
-# @!attribute [rw] features
+# @!attribute [rw] bbox
 #   @return [Array, nil]
 #
-# @!attribute [rw] geometry
-#   @return [Hash, nil]
-#
-# @!attribute [rw] id
+# @!attribute [rw] datetime
 #   @return [String, nil]
 #
-# @!attribute [rw] links
-#   @return [Array, nil]
-#
-# @!attribute [rw] numberMatched
+# @!attribute [rw] limit
 #   @return [Integer, nil]
-#
-# @!attribute [rw] numberReturned
-#   @return [Integer, nil]
-#
-# @!attribute [rw] properties
-#   @return [Hash, nil]
-#
-# @!attribute [rw] stac_version
-#   @return [String, nil]
-#
-# @!attribute [rw] type
-#   @return [String, nil]
 ItemListMatch = Struct.new(
-  :assets,
-  :features,
-  :geometry,
-  :id,
-  :links,
-  :numberMatched,
-  :numberReturned,
-  :properties,
-  :stac_version,
-  :type,
+  :bbox,
+  :datetime,
+  :limit,
   keyword_init: true
 )
 

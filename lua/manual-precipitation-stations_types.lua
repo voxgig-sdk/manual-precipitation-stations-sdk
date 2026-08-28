@@ -34,16 +34,9 @@
 ---@field id string
 
 ---@class ItemListMatch
----@field assets? table
----@field features? table
----@field geometry? table
----@field id? string
----@field links? table
----@field numberMatched? number
----@field numberReturned? number
----@field properties? table
----@field stac_version? string
----@field type? string
+---@field bbox? table
+---@field datetime? string
+---@field limit? number
 
 local M = {}
 

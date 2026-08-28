@@ -51,13 +51,6 @@ class ItemLoadMatch(TypedDict):
 
 
 class ItemListMatch(TypedDict, total=False):
-    assets: dict
-    features: list
-    geometry: dict
-    id: str
-    links: list
-    numberMatched: int
-    numberReturned: int
-    properties: dict
-    stac_version: str
-    type: str
+    bbox: list
+    datetime: str
+    limit: int

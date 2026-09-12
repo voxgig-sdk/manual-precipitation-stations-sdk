@@ -98,10 +98,16 @@ main: kit: entity: item: {
           }
           method: "GET"
           orig: "/collections/ch.meteoschweiz.ogd-nime/items"
-          parts: [
-            "collections"
-            "ch.meteoschweiz.ogd-nime"
-            "items"
+          segments: [
+            {
+              lit: "collections"
+            }
+            {
+              lit: "ch.meteoschweiz.ogd-nime"
+            }
+            {
+              lit: "items"
+            }
           ]
           select: {
             exist: [
@@ -134,17 +140,25 @@ main: kit: entity: item: {
           }
           method: "GET"
           orig: "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}"
-          parts: [
-            "collections"
-            "ch.meteoschweiz.ogd-nime"
-            "items"
-            "{id}"
-          ]
           rename: {
             param: {
               itemId: "id"
             }
           }
+          segments: [
+            {
+              lit: "collections"
+            }
+            {
+              lit: "ch.meteoschweiz.ogd-nime"
+            }
+            {
+              lit: "items"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

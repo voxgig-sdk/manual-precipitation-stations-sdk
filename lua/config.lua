@@ -33,6 +33,7 @@ local function make_config()
       ["collection"] = {
         ["fields"] = {
           {
+            ["format"] = "uri",
             ["name"] = "href",
             ["req"] = true,
             ["type"] = "`$STRING`",
@@ -62,9 +63,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/collections/ch.meteoschweiz.ogd-nime",
-                ["parts"] = {
-                  "collections",
-                  "ch.meteoschweiz.ogd-nime",
+                ["segments"] = {
+                  {
+                    ["lit"] = "collections",
+                  },
+                  {
+                    ["lit"] = "ch.meteoschweiz.ogd-nime",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "chmeteoschweizogd_nime",
@@ -72,6 +77,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "collections",
+                  "ch.meteoschweiz.ogd-nime",
                 },
               },
             },
@@ -126,6 +135,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "item",
         ["op"] = {
           ["list"] = {
@@ -159,10 +172,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/collections/ch.meteoschweiz.ogd-nime/items",
-                ["parts"] = {
-                  "collections",
-                  "ch.meteoschweiz.ogd-nime",
-                  "items",
+                ["segments"] = {
+                  {
+                    ["lit"] = "collections",
+                  },
+                  {
+                    ["lit"] = "ch.meteoschweiz.ogd-nime",
+                  },
+                  {
+                    ["lit"] = "items",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -174,6 +193,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "collections",
+                  "ch.meteoschweiz.ogd-nime",
+                  "items",
                 },
               },
             },
@@ -197,15 +221,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
-                ["parts"] = {
-                  "collections",
-                  "ch.meteoschweiz.ogd-nime",
-                  "items",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["itemId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "collections",
+                  },
+                  {
+                    ["lit"] = "ch.meteoschweiz.ogd-nime",
+                  },
+                  {
+                    ["lit"] = "items",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -216,6 +248,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "collections",
+                  "ch.meteoschweiz.ogd-nime",
+                  "items",
+                  "{id}",
                 },
               },
             },

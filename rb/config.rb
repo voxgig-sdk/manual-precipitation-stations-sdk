@@ -45,6 +45,7 @@ module ManualPrecipitationStationsConfig
         "collection" => {
           "fields" => [
             {
+              "format" => "uri",
               "name" => "href",
               "req" => true,
               "type" => "`$STRING`",
@@ -74,9 +75,13 @@ module ManualPrecipitationStationsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/collections/ch.meteoschweiz.ogd-nime",
-                  "parts" => [
-                    "collections",
-                    "ch.meteoschweiz.ogd-nime",
+                  "segments" => [
+                    {
+                      "lit" => "collections",
+                    },
+                    {
+                      "lit" => "ch.meteoschweiz.ogd-nime",
+                    },
                   ],
                   "select" => {
                     "$action" => "chmeteoschweizogd_nime",
@@ -85,6 +90,10 @@ module ManualPrecipitationStationsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "collections",
+                    "ch.meteoschweiz.ogd-nime",
+                  ],
                 },
               ],
             },
@@ -138,6 +147,10 @@ module ManualPrecipitationStationsConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "item",
           "op" => {
             "list" => {
@@ -171,10 +184,16 @@ module ManualPrecipitationStationsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/collections/ch.meteoschweiz.ogd-nime/items",
-                  "parts" => [
-                    "collections",
-                    "ch.meteoschweiz.ogd-nime",
-                    "items",
+                  "segments" => [
+                    {
+                      "lit" => "collections",
+                    },
+                    {
+                      "lit" => "ch.meteoschweiz.ogd-nime",
+                    },
+                    {
+                      "lit" => "items",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -187,6 +206,11 @@ module ManualPrecipitationStationsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "collections",
+                    "ch.meteoschweiz.ogd-nime",
+                    "items",
+                  ],
                 },
               ],
             },
@@ -209,17 +233,25 @@ module ManualPrecipitationStationsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
-                  "parts" => [
-                    "collections",
-                    "ch.meteoschweiz.ogd-nime",
-                    "items",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "itemId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "collections",
+                    },
+                    {
+                      "lit" => "ch.meteoschweiz.ogd-nime",
+                    },
+                    {
+                      "lit" => "items",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -229,6 +261,12 @@ module ManualPrecipitationStationsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "collections",
+                    "ch.meteoschweiz.ogd-nime",
+                    "items",
+                    "{id}",
+                  ],
                 },
               ],
             },

@@ -105,7 +105,7 @@ local results, err = client:Collection():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
+| TypeScript | `@voxgig-sdk/manual-precipitation-stations-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
 | Python | `voxgig-sdk-manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
 | PHP | `voxgig-sdk/manual-precipitation-stations` | publish pending — [install from git tag](https://github.com/voxgig-sdk/manual-precipitation-stations-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/manual-precipitation-stations-sdk/go` | `go get github.com/voxgig-sdk/manual-precipitation-stations-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Collection():list()
 ### TypeScript
 
 ```ts
-import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations'
+import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations-sdk'
 
 const client = new ManualPrecipitationStationsSDK()
 

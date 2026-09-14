@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/manual-precipitation-stations",
+  "name": "@voxgig-sdk/manual-precipitation-stations-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Manual Precipitation Stations public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

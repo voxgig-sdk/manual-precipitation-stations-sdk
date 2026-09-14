@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations'
+import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations-sdk'
 
 const client = new ManualPrecipitationStationsSDK()
 ```
@@ -470,7 +470,7 @@ manual-precipitation-stations/
 Import the SDK from the package root:
 
 ```ts
-import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations'
+import { ManualPrecipitationStationsSDK } from '@voxgig-sdk/manual-precipitation-stations-sdk'
 ```
 
 ### Entity state

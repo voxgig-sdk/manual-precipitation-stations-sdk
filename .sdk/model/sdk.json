@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "collection": {
           "active": true,
@@ -67,6 +131,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /collections/ch.meteoschweiz.ogd-nime",
+                    "json": "{\"operationId\":\"getManualPrecipitationCollection\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"STAC Collection for manual precipitation stations\",\"properties\":{\"description\":{\"example\":\"Manual precipitation monitoring network data from MeteoSwiss\",\"type\":\"string\"},\"extent\":{\"properties\":{\"spatial\":{\"properties\":{\"bbox\":{\"items\":{\"items\":{\"type\":\"number\"},\"type\":\"array\"},\"type\":\"array\"}},\"type\":\"object\"},\"temporal\":{\"properties\":{\"interval\":{\"items\":{\"items\":{\"nullable\":true,\"type\":\"string\"},\"type\":\"array\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"id\":{\"example\":\"ch.meteoschweiz.ogd-nime\",\"type\":\"string\"},\"license\":{\"example\":\"proprietary\",\"type\":\"string\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"stac_version\":{\"example\":\"1.0.0\",\"type\":\"string\"},\"title\":{\"example\":\"Manual Precipitation Stations\",\"type\":\"string\"},\"type\":{\"example\":\"Collection\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with collection metadata\"},\"404\":{\"description\":\"Collection not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/collections/ch.meteoschweiz.ogd-nime",
@@ -203,6 +273,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /collections/ch.meteoschweiz.ogd-nime/items",
+                    "json": "{\"operationId\":\"getManualPrecipitationItems\",\"parameters\":[{\"description\":\"Maximum number of items to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Bounding box to filter items by location (minLon,minLat,maxLon,maxLat)\",\"explode\":false,\"in\":\"query\",\"name\":\"bbox\",\"required\":false,\"schema\":{\"items\":{\"type\":\"number\"},\"maxItems\":4,\"minItems\":4,\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Filter items by datetime range (ISO 8601 format)\",\"in\":\"query\",\"name\":\"datetime\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Collection of STAC Items representing precipitation station data files\",\"properties\":{\"features\":{\"items\":{\"description\":\"STAC Item representing a precipitation station data file\",\"properties\":{\"assets\":{\"additionalProperties\":{\"description\":\"Asset representing a downloadable data file\",\"properties\":{\"href\":{\"description\":\"URL to download the asset\",\"format\":\"uri\",\"type\":\"string\"},\"roles\":{\"example\":[\"data\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"Title of the asset\",\"type\":\"string\"},\"type\":{\"description\":\"Media type of the asset\",\"example\":\"text/csv\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Assets associated with this item (e.g., CSV data file)\",\"type\":\"object\"},\"geometry\":{\"description\":\"GeoJSON geometry of the station location\",\"properties\":{\"coordinates\":{\"items\":{\"type\":\"number\"},\"maxItems\":3,\"minItems\":2,\"type\":\"array\"},\"type\":{\"example\":\"Point\",\"type\":\"string\"}},\"type\":\"object\"},\"id\":{\"example\":\"ogd-nime-aig_d_recent\",\"type\":\"string\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"properties\":{\"properties\":{\"data_granularity\":{\"description\":\"Data granularity: d (daily), m (monthly), y (yearly)\",\"enum\":[\"d\",\"m\",\"y\"],\"type\":\"string\"},\"datetime\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"end_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"start_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"station_id\":{\"description\":\"Three-letter station identifier\",\"example\":\"AIG\",\"type\":\"string\"},\"station_name\":{\"example\":\"Aigle\",\"type\":\"string\"},\"update_frequency\":{\"description\":\"Update frequency of the data file\",\"enum\":[\"recent\",\"historical\"],\"type\":\"string\"}},\"type\":\"object\"},\"stac_version\":{\"example\":\"1.0.0\",\"type\":\"string\"},\"type\":{\"example\":\"Feature\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"numberMatched\":{\"type\":\"integer\"},\"numberReturned\":{\"type\":\"integer\"},\"type\":{\"example\":\"FeatureCollection\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with data items\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/collections/ch.meteoschweiz.ogd-nime/items",
@@ -249,6 +325,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
+                    "json": "{\"operationId\":\"getManualPrecipitationItem\",\"parameters\":[{\"description\":\"Identifier of the specific data item (e.g., station file identifier)\",\"in\":\"path\",\"name\":\"itemId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"STAC Item representing a precipitation station data file\",\"properties\":{\"assets\":{\"additionalProperties\":{\"description\":\"Asset representing a downloadable data file\",\"properties\":{\"href\":{\"description\":\"URL to download the asset\",\"format\":\"uri\",\"type\":\"string\"},\"roles\":{\"example\":[\"data\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"Title of the asset\",\"type\":\"string\"},\"type\":{\"description\":\"Media type of the asset\",\"example\":\"text/csv\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Assets associated with this item (e.g., CSV data file)\",\"type\":\"object\"},\"geometry\":{\"description\":\"GeoJSON geometry of the station location\",\"properties\":{\"coordinates\":{\"items\":{\"type\":\"number\"},\"maxItems\":3,\"minItems\":2,\"type\":\"array\"},\"type\":{\"example\":\"Point\",\"type\":\"string\"}},\"type\":\"object\"},\"id\":{\"example\":\"ogd-nime-aig_d_recent\",\"type\":\"string\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"properties\":{\"properties\":{\"data_granularity\":{\"description\":\"Data granularity: d (daily), m (monthly), y (yearly)\",\"enum\":[\"d\",\"m\",\"y\"],\"type\":\"string\"},\"datetime\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"end_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"start_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"station_id\":{\"description\":\"Three-letter station identifier\",\"example\":\"AIG\",\"type\":\"string\"},\"station_name\":{\"example\":\"Aigle\",\"type\":\"string\"},\"update_frequency\":{\"description\":\"Update frequency of the data file\",\"enum\":[\"recent\",\"historical\"],\"type\":\"string\"}},\"type\":\"object\"},\"stac_version\":{\"example\":\"1.0.0\",\"type\":\"string\"},\"type\":{\"example\":\"Feature\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with specific data item\"},\"404\":{\"description\":\"Item not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
@@ -290,13 +372,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -386,6 +678,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -490,6 +878,48 @@
         "website": "https://opendatadocs.meteoswiss.ch/a-data-groundbased/a5-manual-precipitation-stations"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1044,6 +1474,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1085,7 +1516,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

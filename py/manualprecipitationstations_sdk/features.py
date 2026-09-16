@@ -1,12 +1,18 @@
 # ManualPrecipitationStations SDK feature factory
 
 from manualprecipitationstations_sdk.feature.base_feature import ManualPrecipitationStationsBaseFeature
+from manualprecipitationstations_sdk.feature.ratelimit_feature import ManualPrecipitationStationsRatelimitFeature
+from manualprecipitationstations_sdk.feature.retry_feature import ManualPrecipitationStationsRetryFeature
 from manualprecipitationstations_sdk.feature.test_feature import ManualPrecipitationStationsTestFeature
+from manualprecipitationstations_sdk.feature.timeout_feature import ManualPrecipitationStationsTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ManualPrecipitationStationsBaseFeature(),
+    "ratelimit": lambda: ManualPrecipitationStationsRatelimitFeature(),
+    "retry": lambda: ManualPrecipitationStationsRetryFeature(),
     "test": lambda: ManualPrecipitationStationsTestFeature(),
+    "timeout": lambda: ManualPrecipitationStationsTimeoutFeature(),
 }
 
 

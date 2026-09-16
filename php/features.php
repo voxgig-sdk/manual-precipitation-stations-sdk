@@ -4,7 +4,10 @@ declare(strict_types=1);
 // ManualPrecipitationStations SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ManualPrecipitationStationsFeatures
@@ -14,8 +17,14 @@ class ManualPrecipitationStationsFeatures
         switch ($name) {
             case "base":
                 return new ManualPrecipitationStationsBaseFeature();
+            case "ratelimit":
+                return new ManualPrecipitationStationsRatelimitFeature();
+            case "retry":
+                return new ManualPrecipitationStationsRetryFeature();
             case "test":
                 return new ManualPrecipitationStationsTestFeature();
+            case "timeout":
+                return new ManualPrecipitationStationsTimeoutFeature();
             default:
                 return new ManualPrecipitationStationsBaseFeature();
         }
@@ -31,7 +40,10 @@ class ManualPrecipitationStationsFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

@@ -7,8 +7,8 @@
         "geometry": {},
         "id": "ITEM00",
         "links": [],
-        "numberMatched": "s69",
-        "numberReturned": "s6a",
+        "numberMatched": 105,
+        "numberReturned": 106,
         "properties": {},
         "stac_version": "s6c",
         "type": "s6d"
@@ -19,8 +19,8 @@
         "geometry": {},
         "id": "ITEM01",
         "links": [],
-        "numberMatched": "scd",
-        "numberReturned": "sce",
+        "numberMatched": 205,
+        "numberReturned": 206,
         "properties": {},
         "stac_version": "sd0",
         "type": "sd1"
@@ -31,8 +31,8 @@
         "geometry": {},
         "id": "ITEM02",
         "links": [],
-        "numberMatched": "s131",
-        "numberReturned": "s132",
+        "numberMatched": 305,
+        "numberReturned": 306,
         "properties": {},
         "stac_version": "s134",
         "type": "s135"
@@ -46,11 +46,438 @@
         "features": [],
         "geometry": {},
         "links": [],
-        "numberMatched": "s195",
-        "numberReturned": "s196",
+        "numberMatched": 405,
+        "numberReturned": 406,
         "properties": {},
         "stac_version": "s198",
         "type": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /collections/ch.meteoschweiz.ogd-nime/items": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getManualPrecipitationItems",
+        "parameters": [
+          {
+            "description": "Maximum number of items to return",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bounding box to filter items by location (minLon,minLat,maxLon,maxLat)",
+            "explode": false,
+            "in": "query",
+            "name": "bbox",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Filter items by datetime range (ISO 8601 format)",
+            "in": "query",
+            "name": "datetime",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Collection of STAC Items representing precipitation station data files",
+                  "properties": {
+                    "features": {
+                      "items": {
+                        "description": "STAC Item representing a precipitation station data file",
+                        "properties": {
+                          "assets": {
+                            "additionalProperties": {
+                              "description": "Asset representing a downloadable data file",
+                              "properties": {
+                                "href": {
+                                  "description": "URL to download the asset",
+                                  "format": "uri",
+                                  "type": "string"
+                                },
+                                "roles": {
+                                  "example": [
+                                    "data"
+                                  ],
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "type": "array"
+                                },
+                                "title": {
+                                  "description": "Title of the asset",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "description": "Media type of the asset",
+                                  "example": "text/csv",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "description": "Assets associated with this item (e.g., CSV data file)",
+                            "type": "object"
+                          },
+                          "geometry": {
+                            "description": "GeoJSON geometry of the station location",
+                            "properties": {
+                              "coordinates": {
+                                "items": {
+                                  "type": "number"
+                                },
+                                "maxItems": 3,
+                                "minItems": 2,
+                                "type": "array"
+                              },
+                              "type": {
+                                "example": "Point",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "id": {
+                            "example": "ogd-nime-aig_d_recent",
+                            "type": "string"
+                          },
+                          "links": {
+                            "items": {
+                              "description": "Link to related resources",
+                              "properties": {
+                                "href": {
+                                  "format": "uri",
+                                  "type": "string"
+                                },
+                                "rel": {
+                                  "example": "self",
+                                  "type": "string"
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "example": "application/json",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "href",
+                                "rel"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "properties": {
+                            "properties": {
+                              "data_granularity": {
+                                "description": "Data granularity: d (daily), m (monthly), y (yearly)",
+                                "enum": [
+                                  "d",
+                                  "m",
+                                  "y"
+                                ],
+                                "type": "string"
+                              },
+                              "datetime": {
+                                "format": "date-time",
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "end_datetime": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "start_datetime": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "station_id": {
+                                "description": "Three-letter station identifier",
+                                "example": "AIG",
+                                "type": "string"
+                              },
+                              "station_name": {
+                                "example": "Aigle",
+                                "type": "string"
+                              },
+                              "update_frequency": {
+                                "description": "Update frequency of the data file",
+                                "enum": [
+                                  "recent",
+                                  "historical"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "stac_version": {
+                            "example": "1.0.0",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "Feature",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "items": {
+                        "description": "Link to related resources",
+                        "properties": {
+                          "href": {
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "rel": {
+                            "example": "self",
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "application/json",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "href",
+                          "rel"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "numberMatched": {
+                      "type": "integer"
+                    },
+                    "numberReturned": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "example": "FeatureCollection",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with data items"
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getManualPrecipitationItem",
+        "parameters": [
+          {
+            "description": "Identifier of the specific data item (e.g., station file identifier)",
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "STAC Item representing a precipitation station data file",
+                  "properties": {
+                    "assets": {
+                      "additionalProperties": {
+                        "description": "Asset representing a downloadable data file",
+                        "properties": {
+                          "href": {
+                            "description": "URL to download the asset",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "roles": {
+                            "example": [
+                              "data"
+                            ],
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "title": {
+                            "description": "Title of the asset",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "Media type of the asset",
+                            "example": "text/csv",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "description": "Assets associated with this item (e.g., CSV data file)",
+                      "type": "object"
+                    },
+                    "geometry": {
+                      "description": "GeoJSON geometry of the station location",
+                      "properties": {
+                        "coordinates": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "maxItems": 3,
+                          "minItems": 2,
+                          "type": "array"
+                        },
+                        "type": {
+                          "example": "Point",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "id": {
+                      "example": "ogd-nime-aig_d_recent",
+                      "type": "string"
+                    },
+                    "links": {
+                      "items": {
+                        "description": "Link to related resources",
+                        "properties": {
+                          "href": {
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "rel": {
+                            "example": "self",
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "application/json",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "href",
+                          "rel"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "properties": {
+                      "properties": {
+                        "data_granularity": {
+                          "description": "Data granularity: d (daily), m (monthly), y (yearly)",
+                          "enum": [
+                            "d",
+                            "m",
+                            "y"
+                          ],
+                          "type": "string"
+                        },
+                        "datetime": {
+                          "format": "date-time",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "end_datetime": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "start_datetime": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "station_id": {
+                          "description": "Three-letter station identifier",
+                          "example": "AIG",
+                          "type": "string"
+                        },
+                        "station_name": {
+                          "example": "Aigle",
+                          "type": "string"
+                        },
+                        "update_frequency": {
+                          "description": "Update frequency of the data file",
+                          "enum": [
+                            "recent",
+                            "historical"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "stac_version": {
+                      "example": "1.0.0",
+                      "type": "string"
+                    },
+                    "type": {
+                      "example": "Feature",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with specific data item"
+          },
+          "404": {
+            "description": "Item not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

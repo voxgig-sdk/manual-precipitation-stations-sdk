@@ -245,10 +245,6 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `href` |  |
-| `rel` |  |
-| `title` |  |
-| `type` |  |
 
 Operations: List.
 
@@ -287,15 +283,6 @@ Create an instance: `collection = client.Collection()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `href` | `str` |  |
-| `rel` | `str` |  |
-| `title` | `str` |  |
-| `type` | `str` |  |
 
 #### Example: List
 
@@ -485,6 +472,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── manualprecipitationstations_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations

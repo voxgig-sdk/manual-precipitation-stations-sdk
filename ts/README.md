@@ -295,10 +295,6 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `href` |  |
-| `rel` |  |
-| `title` |  |
-| `type` |  |
 
 Operations: list.
 
@@ -337,15 +333,6 @@ Create an instance: `const collection = client.Collection()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `href` | `string` |  |
-| `rel` | `string` |  |
-| `title` | `string` |  |
-| `type` | `string` |  |
 
 #### Example: List
 

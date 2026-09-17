@@ -43,7 +43,7 @@ local collections, err = client:Collection():list()
 if err then error(err) end
 
 for _, item in ipairs(collections) do
-  print(item["href"])
+  print(item)
 end
 ```
 
@@ -234,10 +234,6 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `href` |  |
-| `rel` |  |
-| `title` |  |
-| `type` |  |
 
 Operations: List.
 
@@ -276,15 +272,6 @@ Create an instance: `local collection = client:Collection(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `href` | `string` |  |
-| `rel` | `string` |  |
-| `title` | `string` |  |
-| `type` | `string` |  |
 
 #### Example: List
 
@@ -474,6 +461,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── manual-precipitation-stations_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations

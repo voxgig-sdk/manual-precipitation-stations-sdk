@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicCollectionFlow.aon"
-@"BasicItemFlow.aon"
+@"./BasicCollectionFlow.aon"
+@"./BasicItemFlow.aon"

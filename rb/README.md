@@ -37,7 +37,7 @@ begin
   # list returns an Array of Collection records — iterate directly.
   collections = client.Collection.list
   collections.each do |item|
-    puts "#{item["href"]}"
+    puts "#{item}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -239,10 +239,6 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `href` |  |
-| `rel` |  |
-| `title` |  |
-| `type` |  |
 
 Operations: List.
 
@@ -281,15 +277,6 @@ Create an instance: `collection = client.Collection`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `href` | `String` |  |
-| `rel` | `String` |  |
-| `title` | `String` |  |
-| `type` | `String` |  |
 
 #### Example: List
 
@@ -482,6 +469,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── ManualPrecipitationStations_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

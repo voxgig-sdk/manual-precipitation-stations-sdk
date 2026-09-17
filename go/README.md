@@ -263,10 +263,6 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"href"` |  |
-| `"rel"` |  |
-| `"title"` |  |
-| `"type"` |  |
 
 Operations: List.
 
@@ -305,15 +301,6 @@ Create an instance: `collection := client.Collection(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `href` | `string` |  |
-| `rel` | `string` |  |
-| `title` | `string` |  |
-| `type` | `string` |  |
 
 #### Example: List
 

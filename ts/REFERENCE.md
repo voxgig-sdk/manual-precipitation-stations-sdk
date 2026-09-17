@@ -124,15 +124,6 @@ Alias for `ManualPrecipitationStationsSDK.test()`.
 const collection = client.Collection()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `href` | `string` | Yes |  |
-| `rel` | `string` | Yes |  |
-| `title` | `string` | No |  |
-| `type` | `string` | No |  |
-
 ### Actions
 
 This entity exposes custom API actions in addition to the standard

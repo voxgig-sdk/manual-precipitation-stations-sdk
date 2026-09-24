@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -120,7 +113,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/collections/ch.meteoschweiz.ogd-nime",
@@ -132,17 +124,19 @@ class Config {
                                     "lit": "ch.meteoschweiz.ogd-nime"
                                 }
                             ],
-                            "select": {
-                                "$action": "chmeteoschweizogd_nime"
-                            },
+                            "parts": [
+                                "collections",
+                                "ch.meteoschweiz.ogd-nime"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "collections",
-                                "ch.meteoschweiz.ogd-nime"
-                            ]
+                            "args": {},
+                            "select": {
+                                "$action": "chmeteoschweizogd_nime"
+                            }
                         }
                     ]
                 }
@@ -155,44 +149,54 @@ class Config {
             "fields": [
                 {
                     "name": "assets",
-                    "short": "Assets associated with this item (e.g., CSV data file)",
-                    "type": "`$OBJECT`"
+                    "title": "Assets",
+                    "type": "`$OBJECT`",
+                    "short": "Assets associated with this item (e.g., CSV data file)"
                 },
                 {
                     "name": "features",
+                    "title": "Features",
                     "type": "`$ARRAY`"
                 },
                 {
                     "name": "geometry",
-                    "short": "GeoJSON geometry of the station location",
-                    "type": "`$OBJECT`"
+                    "title": "Geometry",
+                    "type": "`$OBJECT`",
+                    "short": "GeoJSON geometry of the station location"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "links",
+                    "title": "Links",
                     "type": "`$ARRAY`"
                 },
                 {
                     "name": "numberMatched",
+                    "title": "Number Matched",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "numberReturned",
+                    "title": "Number Returned",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "properties",
+                    "title": "Properties",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "stac_version",
+                    "title": "Stac Version",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "type",
+                    "title": "Type",
                     "type": "`$STRING`"
                 }
             ],
@@ -207,29 +211,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "bbox",
-                                        "orig": "bbox",
-                                        "type": "`$ARRAY`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "datetime",
-                                        "orig": "datetime",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 10,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/collections/ch.meteoschweiz.ogd-nime/items",
@@ -244,22 +225,46 @@ class Config {
                                     "lit": "items"
                                 }
                             ],
+                            "parts": [
+                                "collections",
+                                "ch.meteoschweiz.ogd-nime",
+                                "items"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "bbox",
+                                        "orig": "bbox",
+                                        "type": "`$ARRAY`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "datetime",
+                                        "orig": "datetime",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 10
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "bbox",
                                     "datetime",
                                     "limit"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "collections",
-                                "ch.meteoschweiz.ogd-nime",
-                                "items"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -268,25 +273,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "item_id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
-                            "rename": {
-                                "param": {
-                                    "itemId": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "collections"
@@ -301,21 +290,37 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "collections",
                                 "ch.meteoschweiz.ogd-nime",
                                 "items",
                                 "{id}"
-                            ]
+                            ],
+                            "rename": {
+                                "param": {
+                                    "itemId": "id"
+                                }
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "item_id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

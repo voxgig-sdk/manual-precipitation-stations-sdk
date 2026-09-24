@@ -19,7 +19,6 @@ import type {
   CollectionListMatch,
 } from '../ManualPrecipitationStationsTypes'
 
-// TODO: needs Entity superclass
 class CollectionEntity extends ManualPrecipitationStationsEntityBase<Collection> {
 
   constructor(client: ManualPrecipitationStationsSDK, entopts: any) {

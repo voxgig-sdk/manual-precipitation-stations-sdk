@@ -122,7 +122,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/collections/ch.meteoschweiz.ogd-nime",
@@ -134,17 +133,19 @@ def make_config():
                     "lit": "ch.meteoschweiz.ogd-nime",
                   },
                 ],
-                "select": {
-                  "$action": "chmeteoschweizogd_nime",
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "collections",
                   "ch.meteoschweiz.ogd-nime",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {
+                  "$action": "chmeteoschweizogd_nime",
+                },
               },
             ],
           },
@@ -157,44 +158,54 @@ def make_config():
         "fields": [
           {
             "name": "assets",
-            "short": "Assets associated with this item (e.g., CSV data file)",
+            "title": "Assets",
             "type": "`$OBJECT`",
+            "short": "Assets associated with this item (e.g., CSV data file)",
           },
           {
             "name": "features",
+            "title": "Features",
             "type": "`$ARRAY`",
           },
           {
             "name": "geometry",
-            "short": "GeoJSON geometry of the station location",
+            "title": "Geometry",
             "type": "`$OBJECT`",
+            "short": "GeoJSON geometry of the station location",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "links",
+            "title": "Links",
             "type": "`$ARRAY`",
           },
           {
             "name": "numberMatched",
+            "title": "Number Matched",
             "type": "`$INTEGER`",
           },
           {
             "name": "numberReturned",
+            "title": "Number Returned",
             "type": "`$INTEGER`",
           },
           {
             "name": "properties",
+            "title": "Properties",
             "type": "`$OBJECT`",
           },
           {
             "name": "stac_version",
+            "title": "Stac Version",
             "type": "`$STRING`",
           },
           {
             "name": "type",
+            "title": "Type",
             "type": "`$STRING`",
           },
         ],
@@ -209,29 +220,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "bbox",
-                      "orig": "bbox",
-                      "type": "`$ARRAY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "datetime",
-                      "orig": "datetime",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/collections/ch.meteoschweiz.ogd-nime/items",
@@ -246,6 +234,39 @@ def make_config():
                     "lit": "items",
                   },
                 ],
+                "parts": [
+                  "collections",
+                  "ch.meteoschweiz.ogd-nime",
+                  "items",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "bbox",
+                      "orig": "bbox",
+                      "type": "`$ARRAY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "datetime",
+                      "orig": "datetime",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "bbox",
@@ -253,15 +274,6 @@ def make_config():
                     "limit",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "collections",
-                  "ch.meteoschweiz.ogd-nime",
-                  "items",
-                ],
               },
             ],
           },
@@ -270,25 +282,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "item_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
-                "rename": {
-                  "param": {
-                    "itemId": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "collections",
@@ -303,21 +299,37 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "collections",
                   "ch.meteoschweiz.ogd-nime",
                   "items",
                   "{id}",
                 ],
+                "rename": {
+                  "param": {
+                    "itemId": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "item_id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },

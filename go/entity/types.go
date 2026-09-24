@@ -1,7 +1,7 @@
 // Typed models for the ManualPrecipitationStations SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -22,16 +22,6 @@ type CollectionListMatch struct {
 
 // Item is the typed data model for the item entity.
 type Item struct {
-	Assets *map[string]any `json:"assets,omitempty"`
-	Features *[]any `json:"features,omitempty"`
-	Geometry *map[string]any `json:"geometry,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *[]any `json:"links,omitempty"`
-	NumberMatched *int `json:"numberMatched,omitempty"`
-	NumberReturned *int `json:"numberReturned,omitempty"`
-	Properties *map[string]any `json:"properties,omitempty"`
-	StacVersion *string `json:"stac_version,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // ItemLoadMatch is the typed request payload for Item.LoadTyped.

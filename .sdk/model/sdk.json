@@ -24,13 +24,79 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "collection": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "collection",
           "op": {
             "list": {
@@ -38,18 +104,21 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /collections/ch.meteoschweiz.ogd-nime",
-                    "json": "{\"operationId\":\"getManualPrecipitationCollection\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"STAC Collection for manual precipitation stations\",\"properties\":{\"description\":{\"example\":\"Manual precipitation monitoring network data from MeteoSwiss\",\"type\":\"string\"},\"extent\":{\"properties\":{\"spatial\":{\"properties\":{\"bbox\":{\"items\":{\"items\":{\"type\":\"number\"},\"type\":\"array\"},\"type\":\"array\"}},\"type\":\"object\"},\"temporal\":{\"properties\":{\"interval\":{\"items\":{\"items\":{\"nullable\":true,\"type\":\"string\"},\"type\":\"array\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"id\":{\"example\":\"ch.meteoschweiz.ogd-nime\",\"type\":\"string\"},\"license\":{\"example\":\"proprietary\",\"type\":\"string\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"stac_version\":{\"example\":\"1.0.0\",\"type\":\"string\"},\"title\":{\"example\":\"Manual Precipitation Stations\",\"type\":\"string\"},\"type\":{\"example\":\"Collection\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with collection metadata\"},\"404\":{\"description\":\"Collection not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/collections/ch.meteoschweiz.ogd-nime",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/collections/ch.meteoschweiz.ogd-nime",
+                  "q": {
+                    "$action": "chmeteoschweizogd_nime"
+                  },
+                  "r": {},
+                  "s": [
                     {
                       "lit": "collections"
                     },
@@ -57,10 +126,7 @@
                       "lit": "ch.meteoschweiz.ogd-nime"
                     }
                   ],
-                  "select": {
-                    "$action": "chmeteoschweizogd_nime"
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -77,70 +143,80 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "assets",
-              "req": false,
-              "short": "Assets associated with this item (e.g., CSV data file)",
-              "type": "`$OBJECT`"
+          "fields": {
+            "assets": {
+              "a": true,
+              "h": "Assets",
+              "n": "assets",
+              "r": false,
+              "sh": "Assets associated with this item (e.g., CSV data file)",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "features",
-              "req": false,
-              "type": "`$ARRAY`"
+            "features": {
+              "a": true,
+              "h": "Features",
+              "n": "features",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "geometry",
-              "req": false,
-              "short": "GeoJSON geometry of the station location",
-              "type": "`$OBJECT`"
+            "geometry": {
+              "a": true,
+              "h": "Geometry",
+              "n": "geometry",
+              "r": false,
+              "sh": "GeoJSON geometry of the station location",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "links",
-              "req": false,
-              "type": "`$ARRAY`"
+            "links": {
+              "a": true,
+              "h": "Links",
+              "n": "links",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "numberMatched",
-              "req": false,
-              "type": "`$INTEGER`"
+            "numberMatched": {
+              "a": true,
+              "h": "Number Matched",
+              "n": "numberMatched",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "numberReturned",
-              "req": false,
-              "type": "`$INTEGER`"
+            "numberReturned": {
+              "a": true,
+              "h": "Number Returned",
+              "n": "numberReturned",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "properties",
-              "req": false,
-              "type": "`$OBJECT`"
+            "properties": {
+              "a": true,
+              "h": "Properties",
+              "n": "properties",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "stac_version",
-              "req": false,
-              "type": "`$STRING`"
+            "stac_version": {
+              "a": true,
+              "h": "Stac Version",
+              "n": "stac_version",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -152,46 +228,53 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /collections/ch.meteoschweiz.ogd-nime/items",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "bbox",
-                        "orig": "bbox",
-                        "reqd": false,
-                        "type": "`$ARRAY`"
+                        "a": true,
+                        "k": "query",
+                        "n": "bbox",
+                        "or": "bbox",
+                        "r": false,
+                        "t": "`$ARRAY`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "datetime",
-                        "orig": "datetime",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "datetime",
+                        "or": "datetime",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 10,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 10,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /collections/ch.meteoschweiz.ogd-nime/items",
-                    "json": "{\"operationId\":\"getManualPrecipitationItems\",\"parameters\":[{\"description\":\"Maximum number of items to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Bounding box to filter items by location (minLon,minLat,maxLon,maxLat)\",\"explode\":false,\"in\":\"query\",\"name\":\"bbox\",\"required\":false,\"schema\":{\"items\":{\"type\":\"number\"},\"maxItems\":4,\"minItems\":4,\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"Filter items by datetime range (ISO 8601 format)\",\"in\":\"query\",\"name\":\"datetime\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Collection of STAC Items representing precipitation station data files\",\"properties\":{\"features\":{\"items\":{\"description\":\"STAC Item representing a precipitation station data file\",\"properties\":{\"assets\":{\"additionalProperties\":{\"description\":\"Asset representing a downloadable data file\",\"properties\":{\"href\":{\"description\":\"URL to download the asset\",\"format\":\"uri\",\"type\":\"string\"},\"roles\":{\"example\":[\"data\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"Title of the asset\",\"type\":\"string\"},\"type\":{\"description\":\"Media type of the asset\",\"example\":\"text/csv\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Assets associated with this item (e.g., CSV data file)\",\"type\":\"object\"},\"geometry\":{\"description\":\"GeoJSON geometry of the station location\",\"properties\":{\"coordinates\":{\"items\":{\"type\":\"number\"},\"maxItems\":3,\"minItems\":2,\"type\":\"array\"},\"type\":{\"example\":\"Point\",\"type\":\"string\"}},\"type\":\"object\"},\"id\":{\"example\":\"ogd-nime-aig_d_recent\",\"type\":\"string\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"properties\":{\"properties\":{\"data_granularity\":{\"description\":\"Data granularity: d (daily), m (monthly), y (yearly)\",\"enum\":[\"d\",\"m\",\"y\"],\"type\":\"string\"},\"datetime\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"end_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"start_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"station_id\":{\"description\":\"Three-letter station identifier\",\"example\":\"AIG\",\"type\":\"string\"},\"station_name\":{\"example\":\"Aigle\",\"type\":\"string\"},\"update_frequency\":{\"description\":\"Update frequency of the data file\",\"enum\":[\"recent\",\"historical\"],\"type\":\"string\"}},\"type\":\"object\"},\"stac_version\":{\"example\":\"1.0.0\",\"type\":\"string\"},\"type\":{\"example\":\"Feature\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"numberMatched\":{\"type\":\"integer\"},\"numberReturned\":{\"type\":\"integer\"},\"type\":{\"example\":\"FeatureCollection\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with data items\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/collections/ch.meteoschweiz.ogd-nime/items",
+                  "q": {
+                    "exist": [
+                      "bbox",
+                      "datetime",
+                      "limit"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/collections/ch.meteoschweiz.ogd-nime/items",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "collections"
                     },
@@ -202,14 +285,7 @@
                       "lit": "items"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "bbox",
-                      "datetime",
-                      "limit"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -221,34 +297,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "item_id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "item_id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
-                    "json": "{\"operationId\":\"getManualPrecipitationItem\",\"parameters\":[{\"description\":\"Identifier of the specific data item (e.g., station file identifier)\",\"in\":\"path\",\"name\":\"itemId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"STAC Item representing a precipitation station data file\",\"properties\":{\"assets\":{\"additionalProperties\":{\"description\":\"Asset representing a downloadable data file\",\"properties\":{\"href\":{\"description\":\"URL to download the asset\",\"format\":\"uri\",\"type\":\"string\"},\"roles\":{\"example\":[\"data\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"Title of the asset\",\"type\":\"string\"},\"type\":{\"description\":\"Media type of the asset\",\"example\":\"text/csv\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Assets associated with this item (e.g., CSV data file)\",\"type\":\"object\"},\"geometry\":{\"description\":\"GeoJSON geometry of the station location\",\"properties\":{\"coordinates\":{\"items\":{\"type\":\"number\"},\"maxItems\":3,\"minItems\":2,\"type\":\"array\"},\"type\":{\"example\":\"Point\",\"type\":\"string\"}},\"type\":\"object\"},\"id\":{\"example\":\"ogd-nime-aig_d_recent\",\"type\":\"string\"},\"links\":{\"items\":{\"description\":\"Link to related resources\",\"properties\":{\"href\":{\"format\":\"uri\",\"type\":\"string\"},\"rel\":{\"example\":\"self\",\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"type\":{\"example\":\"application/json\",\"type\":\"string\"}},\"required\":[\"href\",\"rel\"],\"type\":\"object\"},\"type\":\"array\"},\"properties\":{\"properties\":{\"data_granularity\":{\"description\":\"Data granularity: d (daily), m (monthly), y (yearly)\",\"enum\":[\"d\",\"m\",\"y\"],\"type\":\"string\"},\"datetime\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"end_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"start_datetime\":{\"format\":\"date-time\",\"type\":\"string\"},\"station_id\":{\"description\":\"Three-letter station identifier\",\"example\":\"AIG\",\"type\":\"string\"},\"station_name\":{\"example\":\"Aigle\",\"type\":\"string\"},\"update_frequency\":{\"description\":\"Update frequency of the data file\",\"enum\":[\"recent\",\"historical\"],\"type\":\"string\"}},\"type\":\"object\"},\"stac_version\":{\"example\":\"1.0.0\",\"type\":\"string\"},\"type\":{\"example\":\"Feature\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with specific data item\"},\"404\":{\"description\":\"Item not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "itemId": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "collections"
                     },
@@ -262,12 +342,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -696,13 +771,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -722,13 +797,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -738,19 +813,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "item_ref01",
                 "srcdatavar": "item_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "item01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

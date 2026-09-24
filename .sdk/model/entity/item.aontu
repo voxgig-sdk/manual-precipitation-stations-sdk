@@ -1,0 +1,198 @@
+# Entity: item
+
+main: kit: entity: item: {
+
+  alias: field: {}
+
+  fields: {
+    assets: {
+      h: "Assets"
+      n: "assets"
+      r: false
+      sh: "Assets associated with this item (e.g., CSV data file)"
+      t: "`$OBJECT`"
+    }
+    features: {
+      h: "Features"
+      n: "features"
+      r: false
+      t: "`$ARRAY`"
+    }
+    geometry: {
+      h: "Geometry"
+      n: "geometry"
+      r: false
+      sh: "GeoJSON geometry of the station location"
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$ARRAY`"
+    }
+    numberMatched: {
+      h: "Number Matched"
+      n: "numberMatched"
+      r: false
+      t: "`$INTEGER`"
+    }
+    numberReturned: {
+      h: "Number Returned"
+      n: "numberReturned"
+      r: false
+      t: "`$INTEGER`"
+    }
+    properties: {
+      h: "Properties"
+      n: "properties"
+      r: false
+      t: "`$OBJECT`"
+    }
+    stac_version: {
+      h: "Stac Version"
+      n: "stac_version"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "item"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /collections/ch.meteoschweiz.ogd-nime/items"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "bbox"
+                or: "bbox"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "datetime"
+                or: "datetime"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/collections/ch.meteoschweiz.ogd-nime/items"
+          q: {
+            exist: [
+              "bbox"
+              "datetime"
+              "limit"
+            ]
+          }
+          s: [
+            {
+              lit: "collections"
+            }
+            {
+              lit: "ch.meteoschweiz.ogd-nime"
+            }
+            {
+              lit: "items"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "item_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              itemId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "collections"
+            }
+            {
+              lit: "ch.meteoschweiz.ogd-nime"
+            }
+            {
+              lit: "items"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CollectionEntity = void 0;
 const ManualPrecipitationStationsEntityBase_1 = require("../ManualPrecipitationStationsEntityBase");
-// TODO: needs Entity superclass
 class CollectionEntity extends ManualPrecipitationStationsEntityBase_1.ManualPrecipitationStationsEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

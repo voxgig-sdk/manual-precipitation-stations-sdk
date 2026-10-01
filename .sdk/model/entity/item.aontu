@@ -152,7 +152,7 @@ main: kit: entity: item: {
               {
                 k: "param"
                 n: "id"
-                or: "item_id"
+                or: "itemId"
                 r: true
                 t: "`$STRING`"
               }

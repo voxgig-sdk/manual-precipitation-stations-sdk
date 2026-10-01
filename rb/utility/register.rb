@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 ManualPrecipitationStationsUtility.registrar = ->(u) {
   u.clean = ManualPrecipitationStationsUtilities::Clean
+  u.clean_add = ManualPrecipitationStationsUtilities::CleanAdd
+  u.clean_explain = ManualPrecipitationStationsUtilities::CleanExplain
   u.done = ManualPrecipitationStationsUtilities::Done
   u.make_error = ManualPrecipitationStationsUtilities::MakeError
   u.feature_add = ManualPrecipitationStationsUtilities::FeatureAdd

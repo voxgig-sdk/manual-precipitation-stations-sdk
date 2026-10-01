@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 ManualPrecipitationStationsUtility::setRegistrar(function (ManualPrecipitationStationsUtility $u): void {
     $u->clean = [ManualPrecipitationStationsClean::class, 'call'];
+    $u->clean_add = [ManualPrecipitationStationsClean::class, 'add'];
+    $u->clean_explain = [ManualPrecipitationStationsDone::class, 'clean_explain'];
     $u->done = [ManualPrecipitationStationsDone::class, 'call'];
     $u->make_error = [ManualPrecipitationStationsMakeError::class, 'call'];
     $u->feature_add = [ManualPrecipitationStationsFeatureAdd::class, 'call'];

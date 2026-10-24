@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Item();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('item hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.ManualPrecipitationStationsSDK.test(offline).Item().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.ManualPrecipitationStationsSDK.test(offline).Item()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.ManualPrecipitationStationsSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Item().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.ManualPrecipitationStationsSDK.test().Item().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.ManualPrecipitationStationsSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Item().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Item().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.ManualPrecipitationStationsSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Item().list({ "datetime": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MANUAL_PRECIPITATION_STATIONS_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "assets": { "a": true, "h": "Assets", "n": "assets", "r": false, "sh": "Assets associated with this item (e.g., CSV data file)", "t": "`$OBJECT`", "key$": "assets", "index$": 0 }, "features": { "a": true, "h": "Features", "n": "features", "r": false, "t": "`$ARRAY`", "key$": "features", "index$": 1 }, "geometry": { "a": true, "h": "Geometry", "n": "geometry", "r": false, "sh": "GeoJSON geometry of the station location", "t": "`$OBJECT`", "key$": "geometry", "index$": 2 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 3 }, "links": { "a": true, "h": "Links", "n": "links", "r": false, "t": "`$ARRAY`", "key$": "links", "index$": 4 }, "numberMatched": { "a": true, "h": "Number Matched", "n": "numberMatched", "r": false, "t": "`$INTEGER`", "key$": "numberMatched", "index$": 5 }, "numberReturned": { "a": true, "h": "Number Returned", "n": "numberReturned", "r": false, "t": "`$INTEGER`", "key$": "numberReturned", "index$": 6 }, "properties": { "a": true, "h": "Properties", "n": "properties", "r": false, "t": "`$OBJECT`", "key$": "properties", "index$": 7 }, "stac_version": { "a": true, "h": "Stac Version", "n": "stac_version", "r": false, "t": "`$STRING`", "key$": "stac_version", "index$": 8 }, "type": { "a": true, "h": "Type", "n": "type", "r": false, "t": "`$STRING`", "key$": "type", "index$": 9 } }, "id": { "field": "id", "name": "id" }, "name": "item", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /collections/ch.meteoschweiz.ogd-nime/items", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "bbox", "or": "bbox", "r": false, "t": "`$ARRAY`", "index$": 0 }, { "a": true, "k": "query", "n": "datetime", "or": "datetime", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": 10, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$INTEGER`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/collections/ch.meteoschweiz.ogd-nime/items", "q": { "exist": ["bbox", "datetime", "limit"] }, "r": {}, "s": [{ "lit": "collections" }, { "lit": "ch.meteoschweiz.ogd-nime" }, { "lit": "items" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "itemId", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}", "q": { "exist": ["id"] }, "r": { "param": { "itemId": "id" } }, "s": [{ "lit": "collections" }, { "lit": "ch.meteoschweiz.ogd-nime" }, { "lit": "items" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "item", "name__orig": "item", "Name": "Item", "name_": "item", "name-": "item", "NAME": "ITEM", "index$": 1 }, { "active": true, "entity": "item", "key$": "BasicItemFlow", "kind": "basic", "name": "BasicItemFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "item_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "item_ref01", "srcdatavar": "item_ref01_data", "suffix": "_dt0" }, "m": { "id": "item01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-item_ref01" } }], "index$": 1 }] }, 'Item', { "GET /collections/ch.meteoschweiz.ogd-nime/items": { "protocol": "http", "parameters": [{ "name": "limit", "in": "query", "description": "Maximum number of items to return", "required": false, "schema": { "type": "integer", "default": 10, "minimum": 1, "maximum": 1000 }, "index$": 0 }, { "name": "bbox", "in": "query", "description": "Bounding box to filter items by location (minLon,minLat,maxLon,maxLat)", "required": false, "schema": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 }, "style": "form", "explode": false, "index$": 1 }, { "name": "datetime", "in": "query", "description": "Filter items by datetime range (ISO 8601 format)", "required": false, "schema": { "type": "string" }, "index$": 2 }] }, "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}": { "protocol": "http", "parameters": [{ "name": "itemId", "in": "path", "description": "Identifier of the specific data item (e.g., station file identifier)", "required": true, "schema": { "type": "string" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "assets": { "a": true, "h": "Assets", "n": "assets", "r": false, "sh": "Assets associated with this item (e.g., CSV data file)", "t": "`$OBJECT`", "key$": "assets", "index$": 0 }, "features": { "a": true, "h": "Features", "n": "features", "r": false, "t": "`$ARRAY`", "key$": "features", "index$": 1 }, "geometry": { "a": true, "h": "Geometry", "n": "geometry", "r": false, "sh": "GeoJSON geometry of the station location", "t": "`$OBJECT`", "key$": "geometry", "index$": 2 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 3 }, "links": { "a": true, "h": "Links", "n": "links", "r": false, "t": "`$ARRAY`", "key$": "links", "index$": 4 }, "numberMatched": { "a": true, "h": "Number Matched", "n": "numberMatched", "r": false, "t": "`$INTEGER`", "key$": "numberMatched", "index$": 5 }, "numberReturned": { "a": true, "h": "Number Returned", "n": "numberReturned", "r": false, "t": "`$INTEGER`", "key$": "numberReturned", "index$": 6 }, "properties": { "a": true, "h": "Properties", "n": "properties", "r": false, "t": "`$OBJECT`", "key$": "properties", "index$": 7 }, "stac_version": { "a": true, "h": "Stac Version", "n": "stac_version", "r": false, "t": "`$STRING`", "key$": "stac_version", "index$": 8 }, "type": { "a": true, "h": "Type", "n": "type", "r": false, "t": "`$STRING`", "key$": "type", "index$": 9 } }, "id": { "field": "id", "name": "id" }, "name": "item", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /collections/ch.meteoschweiz.ogd-nime/items", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "bbox", "or": "bbox", "r": false, "t": "`$ARRAY`", "index$": 0 }, { "a": true, "k": "query", "n": "datetime", "or": "datetime", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": 10, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$INTEGER`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/collections/ch.meteoschweiz.ogd-nime/items", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "collections" }, { "lit": "ch.meteoschweiz.ogd-nime" }, { "lit": "items" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "itemId", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/collections/ch.meteoschweiz.ogd-nime/items/{itemId}", "q": { "exist": ["id"] }, "r": { "param": { "itemId": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "collections" }, { "lit": "ch.meteoschweiz.ogd-nime" }, { "lit": "items" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "item", "name__orig": "item", "Name": "Item", "name_": "item", "name-": "item", "NAME": "ITEM", "index$": 1 }, { "active": true, "entity": "item", "key$": "BasicItemFlow", "kind": "basic", "name": "BasicItemFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "item_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "item_ref01", "srcdatavar": "item_ref01_data", "suffix": "_dt0" }, "m": { "id": "item01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-item_ref01" } }], "index$": 1 }] }, 'Item', { "GET /collections/ch.meteoschweiz.ogd-nime/items": { "protocol": "http", "parameters": [{ "name": "limit", "in": "query", "description": "Maximum number of items to return", "required": false, "schema": { "type": "integer", "default": 10, "minimum": 1, "maximum": 1000 }, "index$": 0 }, { "name": "bbox", "in": "query", "description": "Bounding box to filter items by location (minLon,minLat,maxLon,maxLat)", "required": false, "schema": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 }, "style": "form", "explode": false, "index$": 1 }, { "name": "datetime", "in": "query", "description": "Filter items by datetime range (ISO 8601 format)", "required": false, "schema": { "type": "string" }, "index$": 2 }] }, "GET /collections/ch.meteoschweiz.ogd-nime/items/{itemId}": { "protocol": "http", "parameters": [{ "name": "itemId", "in": "path", "description": "Identifier of the specific data item (e.g., station file identifier)", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(item_ref01_data_dt0.id === item_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

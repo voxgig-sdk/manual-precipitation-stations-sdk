@@ -93,6 +93,7 @@ class ManualPrecipitationStationsConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -142,6 +143,10 @@ class ManualPrecipitationStationsConfig
                   'args' => [],
                   'select' => [
                     '$action' => 'chmeteoschweizogd_nime',
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -264,12 +269,10 @@ class ManualPrecipitationStationsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'bbox',
-                      'datetime',
-                      'limit',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -326,6 +329,10 @@ class ManualPrecipitationStationsConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

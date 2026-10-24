@@ -79,6 +79,7 @@ module ManualPrecipitationStationsConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -128,6 +129,10 @@ module ManualPrecipitationStationsConfig
                   "args" => {},
                   "select" => {
                     "$action" => "chmeteoschweizogd_nime",
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -250,12 +255,10 @@ module ManualPrecipitationStationsConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "bbox",
-                      "datetime",
-                      "limit",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -312,6 +315,10 @@ module ManualPrecipitationStationsConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

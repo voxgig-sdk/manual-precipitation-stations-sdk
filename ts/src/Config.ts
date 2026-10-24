@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -163,6 +164,10 @@ class Config {
               "args": {},
               "select": {
                 "$action": "chmeteoschweizogd_nime"
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -285,12 +290,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "bbox",
-                  "datetime",
-                  "limit"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -347,6 +350,10 @@ class Config {
                 "exist": [
                   "id"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

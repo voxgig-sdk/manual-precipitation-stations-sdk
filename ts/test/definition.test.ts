@@ -18,7 +18,12 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -48,8 +53,8 @@ const PLAN: any[] = [
         {
           "href": "x",
           "rel": "self",
-          "title": "x",
-          "type": "application/json"
+          "type": "application/json",
+          "title": "x"
         }
       ]
     },
@@ -65,13 +70,31 @@ const PLAN: any[] = [
     "select": {
       "bbox": "v1",
       "datetime": "v1",
-      "limit": "v1"
+      "limit": 10
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "limit",
       "bbox",
       "datetime"
+    ],
+    "queryArgs": [
+      {
+        "name": "bbox",
+        "wire": "bbox"
+      },
+      {
+        "name": "datetime",
+        "wire": "datetime"
+      },
+      {
+        "name": "limit",
+        "wire": "limit"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -79,41 +102,41 @@ const PLAN: any[] = [
       "type": "FeatureCollection",
       "features": [
         {
-          "assets": {},
+          "id": "ogd-nime-aig_d_recent",
+          "type": "Feature",
+          "stac_version": "1.0.0",
           "geometry": {
+            "type": "Point",
             "coordinates": [
               1
-            ],
-            "type": "Point"
+            ]
           },
-          "id": "ogd-nime-aig_d_recent",
+          "properties": {
+            "datetime": "2026-01-01T00:00:00Z",
+            "start_datetime": "2026-01-01T00:00:00Z",
+            "end_datetime": "2026-01-01T00:00:00Z",
+            "station_id": "AIG",
+            "station_name": "Aigle",
+            "data_granularity": "d",
+            "update_frequency": "recent"
+          },
+          "assets": {},
           "links": [
             {
               "href": "x",
               "rel": "self",
-              "title": "x",
-              "type": "application/json"
+              "type": "application/json",
+              "title": "x"
             }
-          ],
-          "properties": {
-            "data_granularity": "d",
-            "datetime": "2026-01-01T00:00:00Z",
-            "end_datetime": "2026-01-01T00:00:00Z",
-            "start_datetime": "2026-01-01T00:00:00Z",
-            "station_id": "AIG",
-            "station_name": "Aigle",
-            "update_frequency": "recent"
-          },
-          "stac_version": "1.0.0",
-          "type": "Feature"
+          ]
         }
       ],
       "links": [
         {
           "href": "x",
           "rel": "self",
-          "title": "x",
-          "type": "application/json"
+          "type": "application/json",
+          "title": "x"
         }
       ],
       "numberMatched": 1,
@@ -136,7 +159,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -144,18 +172,18 @@ const PLAN: any[] = [
       "type": "Feature",
       "stac_version": "1.0.0",
       "geometry": {
+        "type": "Point",
         "coordinates": [
           1
-        ],
-        "type": "Point"
+        ]
       },
       "properties": {
-        "data_granularity": "d",
         "datetime": "2026-01-01T00:00:00Z",
-        "end_datetime": "2026-01-01T00:00:00Z",
         "start_datetime": "2026-01-01T00:00:00Z",
+        "end_datetime": "2026-01-01T00:00:00Z",
         "station_id": "AIG",
         "station_name": "Aigle",
+        "data_granularity": "d",
         "update_frequency": "recent"
       },
       "assets": {},
@@ -163,8 +191,8 @@ const PLAN: any[] = [
         {
           "href": "x",
           "rel": "self",
-          "title": "x",
-          "type": "application/json"
+          "type": "application/json",
+          "title": "x"
         }
       ]
     },

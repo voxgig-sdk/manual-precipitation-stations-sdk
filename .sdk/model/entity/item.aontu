@@ -113,12 +113,9 @@ main: kit: entity: item: {
           }
           m: "GET"
           o: "/collections/ch.meteoschweiz.ogd-nime/items"
-          q: {
-            exist: [
-              "bbox"
-              "datetime"
-              "limit"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -169,6 +166,10 @@ main: kit: entity: item: {
             param: {
               itemId: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
